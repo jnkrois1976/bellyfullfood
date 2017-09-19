@@ -1,0 +1,17 @@
+body{
+	font-family: 'Open Sans', sans-serif!important;
+	color: #114b5f!important;
+	background-color: #65737e!important;
+	overflow-x: hidden;
+}
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.pageTitle{
+    margin: 15px 0 20px;
+}
+input[disabled]{
+    cursor: not-allowed;
+}

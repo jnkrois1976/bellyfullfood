@@ -1,0 +1,289 @@
+header{
+    background-color: #114b5f;
+}
+header a{
+    color: #fff;
+    font-size: 0.8rem;
+    padding: 8px 0 8px 15px;
+    display: inline-block;
+}
+.navWrapper{
+    background-color: #fff;
+    border-bottom: solid 1px #000;
+}
+nav{
+    background-color: #fff;
+	display: block;
+}
+nav ul{
+    margin: 0;
+}
+nav ul li {
+    font-size: 1.5rem;
+}
+nav ul li a{
+    color: #05668d;
+}
+nav > ul > li:nth-child(1) {
+    order: 4;
+}
+nav > ul > li:nth-child(2){
+    order: 1
+}
+nav > ul > li:nth-child(3){
+    order: 2
+}
+nav > ul > li:nth-child(4){
+    order: 3;
+}
+nav > ul > li:nth-child(5){
+    order: 5;
+}
+nav > ul > li:nth-child(6){
+    order: 6;
+}
+nav > ul > li:nth-child(7){
+    order: 7;
+}
+nav > ul > li:nth-child(1) img{
+    width: 80%;
+    height: auto;
+}
+.home{
+	background-image: url('../img/backgrounds/home.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+	height: inherit;
+	background-attachment: fixed;
+	display: block;
+}
+.faq{
+	background-image: url('../img/backgrounds/faq.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+	height: inherit;
+	background-attachment: fixed;
+	display: block;
+}
+.order{
+	background-image: url('../img/backgrounds/order.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+	height: inherit;
+	background-attachment: fixed;
+	display: block;
+}
+.cart{
+	background-image: url('../img/backgrounds/cart.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+	height: inherit;
+	background-attachment: fixed;
+	display: block;
+}
+.menu{
+	background-image: url('../img/backgrounds/menu.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+	height: inherit;
+	background-attachment: fixed;
+	display: block;
+	min-height: 800px;
+}
+.contact{
+	background-image: url('../img/backgrounds/contact.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+	height: inherit;
+	background-attachment: fixed;
+	display: block;
+}
+.nav{
+	background-color: #fff;
+	display: block;
+	border-bottom: solid 1px #000;
+}
+.footer{
+	background: #343d46; /* Old browsers */
+	background: -moz-linear-gradient(top, #343d46 0%, #65737e 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, #343d46 0%,#65737e 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, #343d46 0%,#65737e 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#343d46', endColorstr='#65737e',GradientType=0 ); /* IE6-9 */
+	display: block;
+	color: #fff;
+	padding: 20px 0;
+}
+#disclaimer{
+    line-height: 1rem;
+}
+#copyWright{
+    font-size: 0.75rem;
+    text-align: center;
+    margin-top: 15px;
+}
+#infoBanner {
+    background-color: #28afb0;
+    color: #fff;
+    padding: 10px;
+}
+#showCase{
+    background-color: rgba(0,0,0,0.5);
+    padding: 15px;
+    color: #fff;
+}
+#showCase hr{
+    border-top: solid 1px #fff;
+}
+#showCase .card{
+    color: #747d7d;
+}
+#showCase .col-8{
+    box-shadow: 0px 0px 10px #000;
+    padding: 0;
+}
+#showCase .col-4 h1,
+#showCase .col-4 h3{
+    color: #fff;
+}
+#showCase .col-4 h1 {
+    font-size: 3rem;
+    text-transform: uppercase;
+    text-shadow:1px 1px 1px #000;
+    text-justify: inter-word;
+}
+#showCase .col-4 h3 {
+    font-size: 2rem;
+}
+#showCase .col-4 > p{
+    font-size: 1.5rem;
+}
+#offers {
+    background-color: rgba(0,0,0,0.8);
+    padding: 20px 0;
+    height: auto;
+    color: #fff;
+}
+#offers > .col > div {
+    font-size: 2.5rem;
+    letter-spacing: -3px;
+    padding: 10px;
+    border-radius: 3px;
+    background-color: #fff;
+    color: #114b5f;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+#offers .btn {
+    letter-spacing: 1px;
+    color: #fff;
+    font-size: 1.25rem;
+}
+#bottomShowCase {
+    background-color: #fff;
+    padding: 10px;
+}
+#bottomShowCase > .col {
+    font-size: 2.30rem;
+    letter-spacing: -3px;
+    color: #05668d;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    font-weight: bold;
+    text-align: center;
+    line-height: 30px;
+}
+#bottomShowCase > .col > p {
+    border-radius: 3px;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    display: block;
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+}
+#menu {
+    background-color: rgba(255,255,255,0.9);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+.menu .card{
+    margin-bottom: 20px;
+    width: 32%;
+}
+#faq {
+    background-color: rgba(255,255,255,0.9);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+#faqPanel{
+    margin-bottom: 20px;
+    display: block;
+}
+#order {
+    background-color: rgba(255,255,255,0.9);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+#order table {
+    background-color: #fff;
+    table-layout: fixed;
+}
+#order td img {
+    width: 100%;
+    height: auto;
+    display: inline-block;
+}
+#order td h5 {
+    display: inline-block;
+}
+#order td input[type=number]{
+    width: 50px;
+    padding: 0 0 0 10px;
+}
+#cart {
+    background-color: rgba(255,255,255,0.9);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+.table {
+    background-color: #fff;
+}
+fieldset {
+    border: solid 1px #d4d4d4;
+    padding: 20px;
+    margin: 0 0 20px 0;
+}
+legend {
+    display: inline;
+    width: auto;
+    margin-bottom: 0;
+}
+legend h4 {
+    display: inline;
+    padding: 0 10px;
+}
+#cart input {
+    margin-bottom: 10px;
+}
+#cart form {
+    background-color: #fff;
+}
+#cart .currency {
+    font-size: 2.5rem;
+    letter-spacing: -3px;
+    padding: 10px;
+    border-radius: 3px;
+    background-color: #fff;
+    color: #114b5f;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+td {
+    vertical-align: middle;
+}
+td:last-child{
+    text-align: right;
+}
+#contact {
+    background-color: rgba(255,255,255,0.9);
+    height: 800px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
