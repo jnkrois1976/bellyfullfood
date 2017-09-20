@@ -55,7 +55,7 @@ $total_meals = 0;
                                         </td>
                                         <td>
                                             <?=$meal_data[$key]?>
-                                            <input type="hidden" value="<?=$value?>" name="<?=$key?>"/>
+                                            <input type="hidden" value="<?=$key.'-'.$value?>" name="meal[]"/>
                                         </td>
                                         <td>
                                             $8.50
@@ -82,15 +82,15 @@ $total_meals = 0;
                             <div class="form-row">
                                 <div class="col">
                                     <label>Name</label>
-                                    <input type="text" class="form-control" name="customerName" placeholder="full name" required/>
+                                    <input value="Juan Rois" type="text" class="form-control" name="customerName" placeholder="full name" required/>
                                 </div>
                                 <div class="col">
                                     <label>Email address</label>
-                                    <input type="email" class="form-control" name="customerEmail" placeholder="name@example.com" required/>
+                                    <input value="jnkrois@gmail.com" type="email" class="form-control" name="customerEmail" placeholder="name@example.com" required/>
                                 </div>
                                 <div class="col">
                                     <label>Phone Number</label>
-                                    <input type="phone" class="form-control" name="customerPhone" placeholder="phone number" required/>
+                                    <input value="305-496-1989" type="phone" class="form-control" name="customerPhone" placeholder="phone number" required/>
                                 </div>
                             </div>
                         </div>
@@ -101,10 +101,10 @@ $total_meals = 0;
                             <div id="address" class="form-row">
                                 <div class="col ">
                                     <label >Delivery Address</label>
-                                    <input class="form-control" id="street_number" name="street_number" required placeholder="Street number" />
+                                    <input value="9045" class="form-control" id="street_number" name="street_number" required placeholder="Street number" />
                                 </div>
                                 <div class="col d-flex align-items-end">
-                                    <input class="form-control" id="route" name="route" required placeholder="Street name"/>
+                                    <input value="Watercrest Cir W" class="form-control" id="route" name="route" required placeholder="Street name"/>
                                 </div>
                                 <div class="col d-flex align-items-end">
                                     <input class="form-control" id="shippingAptNumber" name="shippingAptNumber" placeholder="Apt number"/>
@@ -112,31 +112,31 @@ $total_meals = 0;
                             </div>
                             <div class="form-row">
                                 <div class="col">
-                                    <input class="form-control" name="locality" required placeholder="City" />
+                                    <input value="Parkland" class="form-control" name="locality" required placeholder="City" />
                                 </div>
                                 <div class="col">
-                                    <input class="form-control"name="administrative_area_level_1" required placeholder="State" />
+                                    <input value="FL" class="form-control"name="administrative_area_level_1" required placeholder="State" />
                                 </div>
                                 <div class="col">
-                                    <input class="form-control" name="postal_code" required placeholder="Zip code"/>
+                                    <input value="33076" class="form-control" name="postal_code" required placeholder="Zip code"/>
                                 </div>
                             </div>
                             <hr />
                             <div class="form-row">
                                 <div class="col">
                                     <label>Credit Card Information</label>
-                                    <input value="" class="form-control" id="sq-card-number" name="cardNumber" type="text" placeholder="Credit Card Number" required="required"/>
+                                    <input value="4444555566667777" class="form-control" id="sq-card-number" name="cardNumber" type="text" placeholder="Credit Card Number" required="required"/>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="col">
-                                    <input id="sq-expiration-date" class="form-control" name="sq-expiration-date" type="text" placeholder="MM/YY" required="required" />
+                                    <input value="03/19" id="sq-expiration-date" class="form-control" name="sq-expiration-date" type="text" placeholder="MM/YY" required="required" />
                                 </div>
                                 <div class="col">
-                                    <input value="" class="form-control" id="sq-cvv" name="cardCvv" type="text" placeholder="CVV..." required="required"/>
+                                    <input value="123" value="" class="form-control" id="sq-cvv" name="cardCvv" type="text" placeholder="CVV..." required="required"/>
                                 </div>
                                 <div class="col">
-                                    <input type="text" id="sq-postal-code" name="sq-postal-code" class="form-control" placeholder="Zip Code" required="required" />
+                                    <input value="33076" type="text" id="sq-postal-code" name="sq-postal-code" class="form-control" placeholder="Zip Code" required="required" />
                                 </div>
                             </div>
                         </div>
