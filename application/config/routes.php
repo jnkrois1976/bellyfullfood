@@ -58,3 +58,4 @@ $route['faq'] = 'site/faq';
 $route['order'] = 'site/order';
 $route['cart'] = 'site/cart';
 $route['contact'] = 'site/contact';
+$route['place_order'] = 'site/place_order';

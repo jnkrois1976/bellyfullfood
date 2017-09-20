@@ -272,9 +272,9 @@ legend h4 {
     letter-spacing: -3px;
     padding: 10px;
     border-radius: 3px;
-    background-color: #fff;
     color: #114b5f;
     text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    vertical-align: middle;
 }
 td {
     vertical-align: middle;

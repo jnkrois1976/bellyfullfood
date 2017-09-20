@@ -53,7 +53,7 @@
     <div class="col">
       <div class="d-flex flex-column align-items-center justify-content-center">
         <div>
-          Get 6 meals for $50.<sup>00</sup>
+          Get 6 meals for $50
         </div>
         <a class="btn btn-primary" href="/order">Choose your 6 meals</a>
       </div>
@@ -61,7 +61,7 @@
     <div class="col">
       <div class="d-flex flex-column align-items-center justify-content-center">
         <div>
-          Get 10 meals for $75.<sup>00</sup>
+          Get 10 meals for $75
         </div>
         <a class="btn btn-primary" href="/order">Choose your 10 meals now</a>
       </div>
