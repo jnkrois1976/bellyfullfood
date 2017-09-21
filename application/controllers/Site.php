@@ -65,6 +65,15 @@ class Site extends CI_Controller {
 		$place_order = $this->site_model->place_order();
 		$data = array(
             'page_class' => 'confirmation',
+            'main_content' => 'pages/confirmation_view',
+			'order_details' => $place_order
+        );
+        $this->load->view('templates/template_view', array('data' =>$data));
+	}
+
+	public function thank_you(){
+		$data = array(
+            'page_class' => 'confirmation',
             'main_content' => 'pages/confirmation_view'
         );
         $this->load->view('templates/template_view', array('data' =>$data));

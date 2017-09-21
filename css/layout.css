@@ -104,6 +104,15 @@ nav > ul > li:nth-child(1) img{
 	background-attachment: fixed;
 	display: block;
 }
+.confirmation{
+	background-image: url('../img/backgrounds/thank_you.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+	height: inherit;
+	background-attachment: fixed;
+	display: block;
+}
 .nav{
 	background-color: #fff;
 	display: block;
@@ -128,7 +137,7 @@ nav > ul > li:nth-child(1) img{
     margin-top: 15px;
 }
 #infoBanner {
-    background-color: #28afb0;
+    background-color: #17a2b8;
     color: #fff;
     padding: 10px;
 }
@@ -276,14 +285,23 @@ legend h4 {
     text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
     vertical-align: middle;
 }
+.table td.currency {
+    font-size: 2.5rem;
+    letter-spacing: -3px;
+    padding: 10px;
+    vertical-align: bottom;
+}
 td {
     vertical-align: middle;
 }
 td:last-child{
     text-align: right;
 }
-#contact {
+#contact, #confirmation {
     background-color: rgba(255,255,255,0.9);
-    height: 800px;
+    height: auto;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+#confirmation table{
+	table-layout: fixed;
 }
