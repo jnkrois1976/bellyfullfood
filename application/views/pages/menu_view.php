@@ -17,12 +17,15 @@
         <?php endforeach; ?>
     </div>
     <div class="row">
-        <div class="col">
-            <small>
-                * At Belly Full Foods, we do our best to make sure the majority of our menu consists of the highest quality organic and/or non-GMO ingredients,
-                although some of these ingredients may not be available in their organic or non-GMO varieties at certain times. <br />
-                For more information, please email us at info@bellyfullfoods.com.
-            </small>
+        <div  class="col">
+            <div class="card mb-3 w-100">
+                <div class="card-body">
+                    <small>
+                        * At Belly Full Foods, we do our best to make sure the majority of our menu consists of the highest quality organic and/or non-GMO ingredients, although some of these ingredients may not be available in their organic or non-GMO varieties at certain times.
+                        For more information, please email us at info@bellyfullfoods.com.
+                    </small>
+                </div>
+            </div>
         </div>
     </div>
 </div>

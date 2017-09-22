@@ -15,3 +15,14 @@ ul {
 input[disabled]{
     cursor: not-allowed;
 }
+button{
+	cursor: pointer;
+}
+a.btn-primary, button.btn-primary {
+	background-color: #17a2b8;
+	border-color: #17a2b8
+}
+button.btn-primary:disabled{
+	background-color: #999;
+	border-color: #999;
+}
