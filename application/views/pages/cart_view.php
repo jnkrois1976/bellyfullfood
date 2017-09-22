@@ -32,7 +32,7 @@ $total_meals = 0;
     </div>
     <div class="row">
         <div class="col-8">
-            <form id="cartForm" method="post" action="/place_order">
+            <form id="cartForm" method="post" action="/thank_you">
                 <table class="table table-sm table-striped table-bordered">
                     <thead>
                         <tr>
@@ -75,7 +75,8 @@ $total_meals = 0;
                 </table>
                 <hr />
                 <fieldset>
-                    <input type="hidden" name="order_total" value="<?=money_format('%i', $total_price)?>"
+                    <input type="hidden" name="order_total" value="<?=money_format('%i', $total_price)?>"/>
+                    <input id="serviceTotal" type="hidden" value="<?=$total_price?>" name="serviceTotal" />
                     <legend><h4>Contact and Payment Information</h4></legend>
                     <div class="row">
                         <div class="col">
@@ -125,18 +126,33 @@ $total_meals = 0;
                             <div class="form-row">
                                 <div class="col">
                                     <label>Credit Card Information</label>
-                                    <input value="4444555566667777" class="form-control" id="sq-card-number" name="cardNumber" type="text" placeholder="Credit Card Number" required="required"/>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="col">
-                                    <input value="03/19" id="sq-expiration-date" class="form-control" name="sq-expiration-date" type="text" placeholder="MM/YY" required="required" />
+                                    <div class="form-group">
+                                        <input value="" class="form-control" id="sq-card-number" name="cardNumber" type="text" placeholder="Credit Card Number" required="required"/>
+                                    </div>
                                 </div>
                                 <div class="col">
-                                    <input value="123" class="form-control" id="sq-cvv" name="cardCvv" type="text" placeholder="CVV..." required="required"/>
+                                    <div class="card-logos">
+                                        <img src="/img/visa.png" alt="Visa"/>
+                                        <img src="/img/master-card.png" alt="Master Card"/>
+                                        <img src="/img/amex.png" alt="American Express"/>
+                                        <img src="/img/discover.png" alt="Discover"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col">
+                                    <input value="" id="sq-expiration-date" class="form-control" name="sq-expiration-date" type="text" placeholder="MM/YY" required="required" />
                                 </div>
                                 <div class="col">
-                                    <input value="33076" type="text" id="sq-postal-code" name="sq-postal-code" class="form-control" placeholder="Zip Code" required="required" />
+                                    <input value="" class="form-control" id="sq-cvv" name="cardCvv" type="text" placeholder="CVV..." required="required"/>
+                                </div>
+                                <div class="col">
+                                    <input value="" type="text" id="sq-postal-code" name="sq-postal-code" class="form-control" placeholder="Zip Code" required="required" />
+                                    <input type="hidden" id="card-nonce" name="nonce">
                                 </div>
                             </div>
                         </div>
@@ -174,11 +190,15 @@ $total_meals = 0;
                             </tr>
                             <tr>
                                 <td class="currency">Total</td>
-                                <td colspan="2" class="currency">$<?=money_format('%i', $total_price)?></td>
+                                <td colspan="2" class="currency">
+                                    $<?=money_format('%i', $total_price)?>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
-                    <button type="submit" form="cartForm" class="btn btn-primary btn-lg btn-block">Place order</button>
+                    <?php if($post_data): ?>
+                        <button onclick="submitButtonClick()" type="submit" class="btn btn-primary btn-lg btn-block">Place order</button>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

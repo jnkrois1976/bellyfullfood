@@ -305,3 +305,11 @@ td:last-child{
 #confirmation table{
 	table-layout: fixed;
 }
+iframe.form-control{
+    height: 38px;
+}
+.card-logos img {
+    width: 60px;
+    height: auto;
+    margin-right: 5px;
+}
