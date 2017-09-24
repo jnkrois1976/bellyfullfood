@@ -13,6 +13,21 @@
             }
         }
 
+        function update_menu_item(){
+            $data = array(
+                'meal_id' => $this->input->post('meal_id'),
+                'meal_desc' => $this->input->post('meal_desc'),
+                'meal_img_name' => $this->input->post('meal_img_name'),
+                'meal_ingredients' => $this->input->post('meal_ingredients'),
+                'meal_heating_inst' => $this->input->post('meal_heating_inst'),
+                'meal_nutrition_info' => $this->input->post('meal_nutrition_info'),
+                'meal_enable' => ($this->input->post('meal_enable') == 'on') ? true: false
+            );
+            $this->db->where('meal_id', $data['meal_id']);
+            $update = $this->db->update('meals', $data);
+            return $update;
+        }
+
     } /* login model ends */
 
 ?>

@@ -12,7 +12,7 @@
                         <th>Ingredients</th>
                         <th>Heating instructions</th>
                         <th>Nutrition info</th>
-                        <th>Available</th>
+                        <th colspan="2">Available</th>
                     </tr>
                 </thead>
                 <?php foreach($get_meals as $get_meals_row): ?>
@@ -55,9 +55,18 @@
                             <td>
                                 <div class="form-group">
                                     <label class="switch">
-                                        <input type="checkbox">
+                                        <?php if($get_meals_row->meal_enable): ?>
+                                            <input type="checkbox" checked name="meal_enable">
+                                        <?php elseif(!$get_meals_row->meal_enable): ?>
+                                            <input type="checkbox" name="meal_enable">
+                                        <?php endif; ?>
                                         <span class="slider round"></span>
                                     </label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <input type="submit" value="Update" class="form-control btn btn-primary" />
                                 </div>
                             </td>
                         </form>
