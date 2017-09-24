@@ -11,3 +11,4 @@ $route['order'] = 'site/order';
 $route['cart'] = 'site/cart';
 $route['contact'] = 'site/contact';
 $route['thank_you'] = 'site/place_order';
+$route['place_order'] = 'site/place_order';

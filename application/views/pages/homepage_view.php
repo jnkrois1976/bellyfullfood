@@ -17,25 +17,29 @@
     <div class="col-8">
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
+                <?php $i = 0;?>
                 <?php foreach($get_meals as $get_meals_row): ?>
-                    <?php if($get_meals_row->id - 1 == 0 ):?>
+                    <?php if($i == 0 ):?>
                         <li data-target="#carouselExampleIndicators" data-slide-to="<?=$get_meals_row->id - 1?>" class="active"></li>
-                    <?php elseif($get_meals_row->id - 1 > 0):?>
+                    <?php elseif($i > 0):?>
                         <li data-target="#carouselExampleIndicators" data-slide-to="<?=$get_meals_row->id - 1?>"></li>
                     <?php endif; ?>
+                    <?php $i++; ?>
                 <?php endforeach; ?>
             </ol>
             <div class="carousel-inner">
+                <?php $c = 0;?>
                 <?php foreach($get_meals as $get_meals_row): ?>
-                    <?php if($get_meals_row->id - 1 == 0 ):?>
+                    <?php if($c == 0 ):?>
                         <div class="carousel-item active">
                             <img src="<?=$get_meals_row->meal_img_name?>" alt="<?=$get_meals_row->meal_title?>">
                         </div>
-                    <?php elseif($get_meals_row->id - 1 > 0):?>
+                    <?php elseif($c > 0):?>
                         <div class="carousel-item">
                             <img src="<?=$get_meals_row->meal_img_name?>" alt="<?=$get_meals_row->meal_title?>">
                         </div>
                     <?php endif; ?>
+                    <?php $c++; ?>
                 <?php endforeach; ?>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">

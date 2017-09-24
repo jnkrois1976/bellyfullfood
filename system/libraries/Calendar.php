@@ -6,7 +6,7 @@
  *
  * This content is released under the MIT License (MIT)
  *
- * Copyright (c) 2014 - 2016, British Columbia Institute of Technology
+ * Copyright (c) 2014 - 2017, British Columbia Institute of Technology
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,7 +29,7 @@
  * @package	CodeIgniter
  * @author	EllisLab Dev Team
  * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
- * @copyright	Copyright (c) 2014 - 2016, British Columbia Institute of Technology (http://bcit.ca/)
+ * @copyright	Copyright (c) 2014 - 2017, British Columbia Institute of Technology (http://bcit.ca/)
  * @license	http://opensource.org/licenses/MIT	MIT License
  * @link	https://codeigniter.com
  * @since	Version 1.0.0
@@ -229,7 +229,7 @@ class CI_Calendar {
 		// We use this to determine the "today" date
 		$cur_year	= date('Y', $local_time);
 		$cur_month	= date('m', $local_time);
-		$cur_day	= date('j', $local_time);
+		$cur_day	= date('d', $local_time);
 
 		$is_current_month = ($cur_year == $year && $cur_month == $month);
 
@@ -284,22 +284,40 @@ class CI_Calendar {
 
 			for ($i = 0; $i < 7; $i++)
 			{
-				if ($day > 0 && $day <= $total_days)
-				{
-					$out .= ($is_current_month === TRUE && $day == $cur_day) ? $this->replacements['cal_cell_start_today'] : $this->replacements['cal_cell_start'];
+				if ($day > 0 && $day <= $total_days){
+					if($is_current_month){
+						if ($day < date('d')) {
+							$out .= ($day == $cur_day) ? $this->replacements['cal_cell_start_today'] : $this->replacements['cal_cell_start_past'];
+						}elseif($day > date('d')){
+							$out .= ($day == $cur_day) ? $this->replacements['cal_cell_start_today'] : $this->replacements['cal_cell_start_future'];
+						}else{
+							$out .= ($day == $cur_day) ? $this->replacements['cal_cell_start_today'] : $this->replacements['cal_cell_start'];
+						}
+					}else{
+						$out .= $this->replacements['cal_cell_start_future'];
+					}
 
-					if (isset($data[$day]))
-					{
+
+					if (isset($data[$day])){
 						// Cells with content
 						$temp = ($is_current_month === TRUE && $day == $cur_day) ?
 								$this->replacements['cal_cell_content_today'] : $this->replacements['cal_cell_content'];
 						$out .= str_replace(array('{content}', '{day}'), array($data[$day], $day), $temp);
-					}
-					else
-					{
+					}else{
+						if($is_current_month){
+							if ($day < date('d') && $is_current_month) {
+								$temp = ($day == $cur_day) ? $this->replacements['cal_cell_no_content_today'] : $this->replacements['cal_cell_no_content_past'];
+							}elseif($day > date('d') && $is_current_month){
+								$temp = ($day == $cur_day) ? $this->replacements['cal_cell_no_content_today'] : $this->replacements['cal_cell_no_content_future'];
+							}else{
+								$temp = ($day == $cur_day) ? $this->replacements['cal_cell_no_content_today'] : $this->replacements['cal_cell_no_content'];
+							}
+						}else{
+							$temp = $this->replacements['cal_cell_no_content_future'];
+						}
+
+
 						// Cells with no content
-						$temp = ($is_current_month === TRUE && $day == $cur_day) ?
-								$this->replacements['cal_cell_no_content_today'] : $this->replacements['cal_cell_no_content'];
 						$out .= str_replace('{day}', $day, $temp);
 					}
 
@@ -484,11 +502,15 @@ class CI_Calendar {
 			'week_row_end'				=> '</tr>',
 			'cal_row_start'				=> '<tr>',
 			'cal_cell_start'			=> '<td>',
+			'cal_cell_start_past'		=> '<td class="past disabled">',
+			'cal_cell_start_future'		=> '<td class="future">',
 			'cal_cell_start_today'		=> '<td>',
 			'cal_cell_start_other'		=> '<td style="color: #666;">',
 			'cal_cell_content'			=> '<a href="{content}">{day}</a>',
 			'cal_cell_content_today'	=> '<a href="{content}"><strong>{day}</strong></a>',
 			'cal_cell_no_content'		=> '{day}',
+			'cal_cell_no_content_past'	=> '{day}',
+			'cal_cell_no_content_future'=> '{day}',
 			'cal_cell_no_content_today'	=> '<strong>{day}</strong>',
 			'cal_cell_blank'			=> '&nbsp;',
 			'cal_cell_other'			=> '{day}',

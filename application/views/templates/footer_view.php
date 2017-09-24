@@ -32,7 +32,7 @@
         <script type="text/javascript" src="/js/app.js"></script>
         <script type="text/javascript" src="/js/model.js"></script>
         <script type="text/javascript" src="/js/ajax.js"></script>
-        <?php if($page_class == 'cart'): ?>
+        <?php if($page_class == 'cart' && $this->config->item('square_enable')): ?>
             <script type="text/javascript" src="https://js.squareup.com/v2/paymentform"></script>
             <script type="text/javascript">
                 var sqPaymentForm = new SqPaymentForm({

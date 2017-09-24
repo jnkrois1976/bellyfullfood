@@ -1,80 +1,84 @@
 <?php
 setlocale(LC_MONETARY, 'en_US');
-$post_data = $this->input->post();
-$meal_data = array(
-    '1001' => 'Buffalo Chicken',
-    '1002' => 'Chicken Fajitas',
-    '1003' => 'Chicken Kabobs',
-    '1004' => 'Chicken Parmesan',
-    '1005' => 'Chicken Teriyaki',
-    '1006' => 'Mojo Pork',
-    '1007' => 'Pesto Chicken',
-    '1008' => 'Pesto Shrimp',
-    '1009' => 'Steak Fajitas',
-    '1010' => 'Surf & Turf',
-    '1011' => 'Spring Mix Salad ~VEGAN~',
-    '1012' => 'Turkey-Quinoa Meatballs',
-    '1013' => 'Grilled Pork Tenderloin',
-    '1014' => 'Grilled Chicken Breast',
-    '1015' => 'BBQ Chicken Breast',
-    '1016' => 'Wild-Caught Atlantic Salmon',
-    '1017' => 'Skirt Steak'
-);
+$post_data = $this->input->post('meals');
+$meal_names = array_values($meal_names);
 $total_price = 0;
 $total_meals = 0;
+
 ?>
 <div id="cart" class="container">
     <div class="row">
         <div class="col">
             <h1 class="pageTitle">Order Review</h1>
-            <h4>Your selections are:</h4>
         </div>
     </div>
     <div class="row">
         <div class="col-8">
-            <form id="cartForm" method="post" action="/thank_you">
-                <table class="table table-sm table-striped table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Qty</th>
-                            <th>Meal</th>
-                            <th>Price</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php if($post_data): ?>
-                            <?php foreach($post_data as $key => $value): ?>
-                                <?php if($value > 0): ?>
-                                    <?php
-                                    $total_price += 8.50 * $value;
-                                    $total_meals += $value;
-                                    ?>
-                                    <tr>
-                                        <td>
-                                            <?=$value?>
-                                        </td>
-                                        <td>
-                                            <?=$meal_data[$key]?>
-                                            <input type="hidden" value="<?=$key."-".$value?>" name="name[]"/>
-                                        </td>
-                                        <td>
-                                            $8.50
-                                        </td>
-                                    </tr>
-                                <?php endif; ?>
-                            <?php endforeach; ?>
-                        <?php elseif(!$post_data): ?>
-                            <tr>
-                                <td colspan="2">
-                                    There is nothing in the cart yet.
-                                </td>
-                                <td>&nbsp;</td>
-                            </tr>
-                        <?php endif; ?>
-                    </tbody>
-                </table>
+            <form id="cartForm" method="post" action="/place_order">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="card">
+                            <div class="card-header">Your selections are</div>
+                            <div class="card-body">
+                                <table class="table table-sm table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Qty</th>
+                                            <th>Meal</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php if($post_data): ?>
+                                            <?php foreach($post_data as $key => $value): ?>
+                                                <?php if($value > 0): ?>
+                                                    <?php
+                                                    $total_price += 8.50 * $value;
+                                                    $total_meals += $value;
+                                                    ?>
+                                                    <tr>
+                                                        <td>
+                                                            <?=$value?>
+                                                        </td>
+                                                        <td>
+                                                            <?=$meal_names[$key]?>
+                                                            <input type="hidden" value="<?=$meal_names[$key]."-".$value?>" name="name[]"/>
+                                                        </td>
+                                                    </tr>
+                                                <?php endif; ?>
+                                            <?php endforeach; ?>
+                                        <?php elseif(!$post_data): ?>
+                                            <tr>
+                                                <td colspan="2">
+                                                    There is nothing in the cart yet.
+                                                </td>
+                                            </tr>
+                                        <?php endif; ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="card">
+                            <div class="card-header">Your delivery date</div>
+                            <div class="card-body">
+                                <h3><?=$this->input->post('formattedDate')?></h3>
+                                <p>
+                                    <?php $date = date_create($this->input->post('deliveryTime')); ?>
+                                    at around <?=date_format($date, 'g:i A')?>
+                                </p>
+                                <p>
+                                    Please review our <a href="/faq">deliveries policy</a> for more information.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <hr />
                 <fieldset>
+                    <input type="hidden" value="<?=$this->input->post('deliveryTime')?>" name="deliveryTime" />
+                    <input type="hidden" value="<?=$this->input->post('rawDate')?>" name="rawDate" />
+                    <input type="hidden" value="<?=$this->input->post('formattedDate')?>" name="formattedDate" />
                     <input type="hidden" name="order_total" value="<?=money_format('%i', $total_price)?>"/>
                     <input id="serviceTotal" type="hidden" value="<?=$total_price?>" name="serviceTotal" />
                     <legend><h4>Contact and Payment Information</h4></legend>
@@ -166,9 +170,9 @@ $total_meals = 0;
                 <div class="card-body">
                     <table class="table table-sm table-bordered table-striped">
                         <colgroup>
-                            <col width="20%">
+                            <col width="10%">
                             <col width="60%">
-                            <col width="20%">
+                            <col width="30%">
                         </colgroup>
                         <thead>
                             <tr>
@@ -181,23 +185,24 @@ $total_meals = 0;
                             <tr>
                                 <td><?=$total_meals?></td>
                                 <td>Meals</td>
-                                <td>$<?=money_format('%i', $total_price)?></td>
+                                <td class="text-right">$8.50 <sup>each</sup></td>
                             </tr>
                             <tr>
                                 <td>-</td>
                                 <td>Delivery</td>
-                                <td>$<?=money_format('%i',0)?></td>
+                                <td class="text-right">$<?=money_format('%i',0)?></td>
                             </tr>
                             <tr>
-                                <td class="currency">Total</td>
-                                <td colspan="2" class="currency">
+                                <td colspan="2" class="currency">Total</td>
+                                <td class="currency text-right">
                                     $<?=money_format('%i', $total_price)?>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                     <?php if($post_data): ?>
-                        <button onclick="submitButtonClick()" type="submit" class="btn btn-primary btn-lg btn-block">Place order</button>
+                        <button type="submit" form="cartForm" class="btn btn-primary btn-lg btn-block">Place order</button>
+                        <!-- <button onclick="submitButtonClick()" type="submit" class="btn btn-primary btn-lg btn-block">Place order</button> -->
                     <?php endif; ?>
                 </div>
             </div>
