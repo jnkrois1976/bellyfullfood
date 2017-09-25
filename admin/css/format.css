@@ -33,7 +33,9 @@
   -webkit-transition: .4s;
   transition: .4s;
 }
-
+input[disabled]{
+    cursor: not-allowed;
+}
 input:checked + .slider {
   background-color: #2196F3;
 }

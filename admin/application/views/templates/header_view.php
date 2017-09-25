@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title itemprop='name'>CodeIgniter template project</title>
+    <title itemprop='name'>BellyFull - Admin</title>
     <link rel="canonical" href="<?php echo base_url();?>" itemprop="url">
     <meta name="description" content="<?=$this->lang->line('head_description')?>">
     <meta name="keywords" content="<?=$this->lang->line('keywords')?>">
@@ -29,7 +29,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="/site/index">View orders<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/site/orders">View orders<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/site/menu">View Menu</a>

@@ -53,7 +53,7 @@
         </div>
     </div>
   </div>
-  <div id="offers" class="row">
+  <!-- <div id="offers" class="row">
     <div class="col">
       <div class="d-flex flex-column align-items-center justify-content-center">
         <div>
@@ -70,7 +70,7 @@
         <a class="btn btn-primary" href="/order">Choose your 10 meals now</a>
       </div>
     </div>
-  </div>
+  </div> -->
   <div id="bottomShowCase" class="row">
     <div class="col">
       <p class="d-flex align-items-center justify-content-center">Non-GMO</p>
@@ -79,10 +79,10 @@
       <p class="d-flex align-items-center justify-content-center">Organic</p>
     </div>
     <div class="col">
-      <p class="d-flex align-items-center justify-content-center">Fresh Ingredients</p>
+      <p class="d-flex align-items-center justify-content-center">Free Delivery</p>
     </div>
     <div class="col">
-      <p class="d-flex align-items-center justify-content-center">No subscription</p>
+      <p class="d-flex align-items-center justify-content-center">Only the Freshest Ingredients</p>
     </div>
   </div>
 </div>

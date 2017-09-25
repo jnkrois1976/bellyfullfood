@@ -1,0 +1,12 @@
+#pagination{
+    margin-top: 0;
+}
+.pageTitle h1{
+    margin-top: 0;
+}
+
+#pagination .pagItem {
+    padding: 0 5px;
+    border: solid 1px #efefef;
+    margin-right: 5px;
+    border-radius: 3px;

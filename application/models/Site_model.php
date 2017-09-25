@@ -24,6 +24,20 @@
             }
         }
 
+        function add_to_cart(){
+            $cookie = array(
+                'name'   => 'mealInCart',
+                'value'  => json_encode($this->input->post(NULL, FALSE)),
+                'expire' => time() + (10 * 365 * 24 * 60 * 60),
+                'domain' => '',
+                'path'   => '/',
+                'prefix' => '',
+                'secure' => FALSE
+            );
+            $this->load->helper('cookie');
+            $this->input->set_cookie($cookie);
+        }
+
         function place_order(){
             $characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         	$strlength = strlen($characters);
@@ -56,10 +70,18 @@
                 'cust_zip' => $this->input->post('postal_code')
             );
             $create_order = $this->db->insert('orders', $data);
-
+            $this->load->helper('cookie');
+            delete_cookie('mealInCart');
             if($create_order){
                 return $data;
             }
+        }
+
+        function get_last_order(){
+            $sql = "SELECT * FROM orders WHERE id=(SELECT MAX(id) FROM orders)";
+            $query = $this->db->query($sql);
+            $last_order = $query->row_array();
+            return $last_order;
         }
 
     } /* login model ends */

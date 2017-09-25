@@ -41,6 +41,11 @@
                             <?php endfor; ?>
                         </tbody>
                     </table>
+                    <h4>Your aproximate delivery date and time:</h4>
+                    <p>
+                        <?php $date = date_create($order_details['delivery_time']); ?>
+                        <?=$order_details['delivery_date']." around ".date_format($date, 'g:i A')?>
+                    </p>
                 </div>
             </div>
         </div>

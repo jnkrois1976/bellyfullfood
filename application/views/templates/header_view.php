@@ -50,6 +50,9 @@
                     </li>
                     <li class="col d-flex align-items-center justify-content-center">
                         <a href="/cart">Cart</a>
+                        <?php if($this->input->cookie('mealInCart')): ?>
+                            <span class="badge badge-primary"> 1</span>
+                        <?php endif; ?>
                     </li>
                     <li class="col d-flex align-items-center justify-content-center">
                         <a href="/contact">Contact Us</a>

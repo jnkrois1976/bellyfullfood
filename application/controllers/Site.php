@@ -50,6 +50,9 @@ class Site extends CI_Controller {
 	public function cart(){
 		$this->load->model('site_model');
 		$get_meal_names = $this->site_model->get_meal_names();
+		if($this->input->post(NULL, FALSE) != null){
+			$this->site_model->add_to_cart();
+		}
         $data = array(
             'page_class' => 'cart',
             'main_content' => 'pages/cart_view',
@@ -155,10 +158,18 @@ class Site extends CI_Controller {
 	public function place_order(){
 		$this->load->model('site_model');
 		$place_order = $this->site_model->place_order();
+		if($place_order){
+			header('Location: /thank_you');
+		}
+	}
+
+	public function thank_you(){
+		$this->load->model('site_model');
+		$get_last_order = $this->site_model->get_last_order();
 		$data = array(
 			'page_class' => 'confirmation',
 			'main_content' => 'pages/confirmation_view',
-			'order_details' => $place_order
+			'order_details' => $get_last_order
 		);
 		$this->load->view('templates/template_view', array('data' =>$data));
 	}
