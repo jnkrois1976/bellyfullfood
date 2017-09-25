@@ -1,6 +1,6 @@
 <div class="container">
   <div id="showCase" class="row">
-    <div class="col-4">
+    <div class="col-sm-4">
       <h1>Belly Full</h1>
       <hr />
       <h3>Healthy Meal Delivery Service</h3>
@@ -10,11 +10,11 @@
         <div class="card-body">
           <h4 class="card-title">Limited time offer</h4>
           <p class="card-text">Order NOW and get free delivery on all orders.</p>
-          <a href="/order" class="btn btn-primary">Order Now For Free Delivery</a>
+          <a href="/order" class="btn btn-primary w-100">Order Now</a>
         </div>
       </div>
     </div>
-    <div class="col-8">
+    <div class="col-sm-8">
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
                 <?php $i = 0;?>
@@ -72,16 +72,16 @@
     </div>
   </div> -->
   <div id="bottomShowCase" class="row">
-    <div class="col">
+    <div class="col-sm-3">
       <p class="d-flex align-items-center justify-content-center">Non-GMO</p>
     </div>
-    <div class="col">
+    <div class="col-sm-3">
       <p class="d-flex align-items-center justify-content-center">Organic</p>
     </div>
-    <div class="col">
+    <div class="col-sm-3">
       <p class="d-flex align-items-center justify-content-center">Free Delivery</p>
     </div>
-    <div class="col">
+    <div class="col-sm-3">
       <p class="d-flex align-items-center justify-content-center">Only the Freshest Ingredients</p>
     </div>
   </div>

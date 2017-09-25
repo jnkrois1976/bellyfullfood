@@ -31,7 +31,13 @@
             </div>
         </header>
         <div class="navWrapper">
-            <nav class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                <!-- <span class="navbar-toggler-icon"></span> -->
+                <img class="navbar-toggler-icon" src="/img/ic_menu_black_24px.svg" alt="Menu" />
+            </button>
+            <nav class="container collapse" id="navbarToggleExternalContent">
+
+                <!-- <img src="/img/ic_menu_black_24px.svg" alt="Menu" /> -->
                 <ul class="row">
                     <li class="col d-flex align-items-center justify-content-center">
                         <img src="/img/belly_full_logo_small.jpg" alt="BellyFullFoods.com" title="BellyFullFoods" />

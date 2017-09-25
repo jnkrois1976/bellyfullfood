@@ -25,10 +25,10 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-8">
+            <div class="col-sm-8">
                 <form id="cartForm" method="post" action="/place_order">
                     <div class="row">
-                        <div class="col-6">
+                        <div class="col-sm-6">
                             <div class="card">
                                 <div class="card-header">Your selections are</div>
                                 <div class="card-body">
@@ -70,7 +70,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-6">
+                        <div class="col-sm-6">
                             <div class="card">
                                 <div class="card-header">Your delivery date</div>
                                 <div class="card-body">
@@ -97,15 +97,15 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-row">
-                                    <div class="col">
+                                    <div class="col-sm-4">
                                         <label>Name</label>
                                         <input value="Juan Rois" type="text" class="form-control" name="customerName" placeholder="full name" required/>
                                     </div>
-                                    <div class="col">
+                                    <div class="col-sm-4">
                                         <label>Email address</label>
                                         <input value="jnkrois@gmail.com" type="email" class="form-control" name="customerEmail" placeholder="name@example.com" required/>
                                     </div>
-                                    <div class="col">
+                                    <div class="col-sm-4">
                                         <label>Phone Number</label>
                                         <input value="305-496-1989" type="phone" class="form-control" name="customerPhone" placeholder="phone number" required/>
                                     </div>
@@ -116,25 +116,25 @@
                             <div class="col">
                                 <hr />
                                 <div id="address" class="form-row">
-                                    <div class="col ">
+                                    <div class="col-sm-4">
                                         <label >Delivery Address</label>
                                         <input value="9045" class="form-control" id="street_number" name="street_number" required placeholder="Street number" />
                                     </div>
-                                    <div class="col d-flex align-items-end">
+                                    <div class="col-sm-4 d-flex align-items-end">
                                         <input value="Watercrest Cir W" class="form-control" id="route" name="route" required placeholder="Street name"/>
                                     </div>
-                                    <div class="col d-flex align-items-end">
+                                    <div class="col-sm-4 d-flex align-items-end">
                                         <input class="form-control" id="shippingAptNumber" name="shippingAptNumber" placeholder="Apt number"/>
                                     </div>
                                 </div>
                                 <div class="form-row">
-                                    <div class="col">
+                                    <div class="col-sm-4">
                                         <input value="Parkland" class="form-control" name="locality" required placeholder="City" />
                                     </div>
-                                    <div class="col">
+                                    <div class="col-sm-4">
                                         <input value="FL" class="form-control"name="administrative_area_level_1" required placeholder="State" />
                                     </div>
-                                    <div class="col">
+                                    <div class="col-sm-4">
                                         <input value="33076" class="form-control" name="postal_code" required placeholder="Zip code"/>
                                     </div>
                                 </div>
@@ -145,12 +145,12 @@
                                     </div>
                                 </div>
                                 <div class="form-row">
-                                    <div class="col">
+                                    <div class="col-sm-8">
                                         <div class="form-group">
                                             <input value="" class="form-control" id="sq-card-number" name="cardNumber" type="text" placeholder="Credit Card Number" required="required"/>
                                         </div>
                                     </div>
-                                    <div class="col">
+                                    <div class="col-sm-4">
                                         <div class="card-logos">
                                             <img src="/img/visa.png" alt="Visa"/>
                                             <img src="/img/master-card.png" alt="Master Card"/>
@@ -160,13 +160,13 @@
                                     </div>
                                 </div>
                                 <div class="form-row">
-                                    <div class="col">
+                                    <div class="col-sm-4">
                                         <input value="" id="sq-expiration-date" class="form-control" name="sq-expiration-date" type="text" placeholder="MM/YY" required="required" />
                                     </div>
-                                    <div class="col">
+                                    <div class="col-sm-4">
                                         <input value="" class="form-control" id="sq-cvv" name="cardCvv" type="text" placeholder="CVV..." required="required"/>
                                     </div>
-                                    <div class="col">
+                                    <div class="col-sm-4">
                                         <input value="" type="text" id="sq-postal-code" name="sq-postal-code" class="form-control" placeholder="Zip Code" required="required" />
                                         <input type="hidden" id="card-nonce" name="nonce">
                                     </div>
@@ -176,7 +176,7 @@
                     </fieldset>
                 </form>
             </div>
-            <div class="col-4">
+            <div class="col-sm-4">
                 <div class="card">
                     <div class="card-header">Your order</div>
                     <div class="card-body">

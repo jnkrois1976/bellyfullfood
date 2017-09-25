@@ -64,7 +64,8 @@ class Site extends CI_Controller {
 	public function contact(){
         $data = array(
             'page_class' => 'contact',
-            'main_content' => 'pages/contact_view'
+            'main_content' => 'pages/contact_view',
+			'email_sent' => FALSE
         );
         $this->load->view('templates/template_view', array('data' =>$data));
     }
@@ -206,6 +207,60 @@ class Site extends CI_Controller {
 		$data = array(
 			'page_class' => 'email_test',
 			'main_content' => 'pages/email_test_view',
+			'email_sent' => $send_message
+		);
+		$this->load->view('templates/template_view', array('data' =>$data));
+	}
+
+	public function send_message(){
+		$customer_name = $this->input->post('customerName');
+        $customer_email = $this->input->post('customerEmail');
+        $message_subject = $this->input->post('customerPhone');
+        $message_body = $this->input->post('customerMessage');
+        $email_template = '
+			<html>
+				<head>
+					<title>Message from customer</title>
+				</head>
+				<body>
+					<table cellpadding="1" cellspacing="2" border="0" width="600">
+						<tr>
+							<td>Customer name</td>
+                            <td>'.$customer_name.'</td>
+						</tr>
+						<tr>
+							<td>Customer email</td>
+                            <td>'.$customer_email.'</td>
+						</tr>
+                        <tr>
+							<td>Message subject</td>
+                            <td>'.$message_subject.'</td>
+						</tr>
+                        <tr>
+							<td>Customer message</td>
+                            <td>'.$message_body.'</td>
+						</tr>
+					</table>
+				</body>
+			</html>
+		';
+        $config['protocol'] = 'smtp';
+        $config['mailpath'] = '/usr/sbin/sendmail';
+        $config['smtp_host'] = 'localhost';;
+        $config['smtp_port'] = 25;
+        $config['mailtype'] = 'html';
+        $this->email->initialize($config);
+        $this->email->from($customer_email);
+        // $this->email->to('jnkrois@gmail.com');
+		$this->email->to('info@bellyfullfoods.com');
+        $this->email->reply_to('noreply@bellyfullfoods.com');
+        $this->email->subject('New customer message');
+        $this->email->message($email_template);
+        $send_message = $this->email->send();
+        $this->email->clear(TRUE);
+		$data = array(
+			'page_class' => 'contact',
+			'main_content' => 'pages/contact_view',
 			'email_sent' => $send_message
 		);
 		$this->load->view('templates/template_view', array('data' =>$data));

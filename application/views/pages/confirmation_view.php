@@ -6,17 +6,12 @@
         </div>
     </div>
     <div class="row d-flex">
-        <div class="col-8">
+        <div class="col-sm-8">
             <div class="card bg-light mb-3">
                 <div class="card-header"><h1>Order number: <?=$order_details['order_number']?></h1></div>
                 <div class="card-body">
                     <h4 class="card-title">Order Details</h4>
                     <table class="table table-bordered table-sm">
-                        <colgroup>
-                            <col width="10%" />
-                            <col width="60%" />
-                            <col width="30%" />
-                        </colgroup>
                         <thead>
                             <tr>
                                 <th class="text-center">Qty</th>
@@ -49,8 +44,8 @@
                 </div>
             </div>
         </div>
-        <div class="col-4">
-            <div class="card text-white bg-info mb-3" style="max-width: 20rem;">
+        <div class="col-sm-4">
+            <div class="card text-white bg-info mb-3 w-100">
                 <div class="card-header">We're Cooking</div>
                 <div class="card-body">
                     <h4 class="card-title">Need anything else?</h4>

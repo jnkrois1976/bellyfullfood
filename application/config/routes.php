@@ -13,3 +13,4 @@ $route['contact'] = 'site/contact';
 $route['thank_you'] = 'site/thank_you';
 $route['place_order'] = 'site/place_order';
 $route['email_test'] = 'site/email_test';
+$route['send_message'] = 'site/send_message';

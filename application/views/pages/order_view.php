@@ -6,15 +6,10 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-12">
+        <div class="col-sm-12">
             <form id="addToCartForm" class="row" method="post" action="/cart">
-                <div class="col-8">
+                <div class="col-sm-8">
                     <table class="table table-bordered table-striped">
-                        <colgroup>
-                            <col width="15%">
-                            <col width="65%">
-                            <col width="15%">
-                        </colgroup>
                         <thead>
                             <tr>
                                 <th colspan="2">Meal </th>
@@ -34,7 +29,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="col-4">
+                <div class="col-sm-4">
                     <div class="card">
                         <div class="card-header">
                             Your Selections
@@ -42,10 +37,6 @@
                         <div class="card-body">
                             <h6>Please select a minimun of 6 meals</h6>
                             <table class="table table-bordered table-striped">
-                                <colgroup>
-                                    <col width="80%">
-                                    <col width="20%">
-                                </colgroup>
                                 <thead>
                                     <tr>
                                         <th>Meal</th>
