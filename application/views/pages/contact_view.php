@@ -16,9 +16,9 @@
                 </div>
             <?php elseif(!$email_sent): ?>
                 <form action="/send_message" method="post">
-                    <fieldset>
-                        <legend><h4>Send us a message</h4></legend>
-                        <div class="row">
+                    <div class="card mb-3">
+                        <div class="card-header">Send us a message</div>
+                        <div class="card-body">
                             <div class="col">
                                 <div class="form-row">
                                     <div class="col">
@@ -43,7 +43,7 @@
                                 </div>
                             </div>
                         </div>
-                    </fieldset>
+                    </div>
                 </form>
             <?php endif; ?>
         </div>
