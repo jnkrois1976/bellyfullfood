@@ -166,10 +166,47 @@ class Site extends CI_Controller {
 	public function thank_you(){
 		$this->load->model('site_model');
 		$get_last_order = $this->site_model->get_last_order();
+		$email_template = $this->load->view('includes/confirmation_email_view', array('last_order' => $get_last_order), TRUE);
+        $config['protocol'] = 'smtp';
+        $config['mailpath'] = '/usr/sbin/sendmail';
+        $config['smtp_host'] = 'localhost';;
+        $config['smtp_port'] = 25;
+        $config['mailtype'] = 'html';
+        $this->email->initialize($config);
+        $this->email->from('info@bellyfullfoods.com', 'BellyFullFoods.com');
+        $this->email->to($get_last_order['cust_email']);
+        $this->email->reply_to('noreply@bellyfullfoods.com');
+        $this->email->subject('BellyFullFoods.com - Your oder details');
+        $this->email->message($email_template);
+        $send_message = $this->email->send();
+        $this->email->clear(TRUE);
 		$data = array(
 			'page_class' => 'confirmation',
 			'main_content' => 'pages/confirmation_view',
 			'order_details' => $get_last_order
+		);
+		$this->load->view('templates/template_view', array('data' =>$data));
+	}
+
+	public function email_test(){
+		$email_template = "test mesage";
+        $config['protocol'] = 'smtp';
+        $config['mailpath'] = '/usr/sbin/sendmail';
+        $config['smtp_host'] = 'localhost';;
+        $config['smtp_port'] = 25;
+        $config['mailtype'] = 'text';
+        $this->email->initialize($config);
+        $this->email->from('info@bellyfullfoods.com', 'BellyFullFoods.com');
+        $this->email->to('jnkrois@gmail.com');
+        $this->email->reply_to('noreply@bellyfullfoods.com');
+        $this->email->subject('BellyFullFoods.com - Your oder details');
+        $this->email->message($email_template);
+        $send_message = $this->email->send();
+        $this->email->clear(TRUE);
+		$data = array(
+			'page_class' => 'email_test',
+			'main_content' => 'pages/email_test_view',
+			'email_sent' => $send_message
 		);
 		$this->load->view('templates/template_view', array('data' =>$data));
 	}
