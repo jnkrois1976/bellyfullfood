@@ -49,6 +49,12 @@ nav > ul > li:nth-child(1) img{
     width: 80%;
     height: auto;
 }
+.navbar-toggler{
+    display: none;
+}
+nav.collapse{
+    display: block;
+}
 .home{
 	background-image: url('../img/backgrounds/home.jpg');
 	background-repeat: no-repeat;
@@ -146,6 +152,10 @@ nav > ul > li:nth-child(1) img{
     padding: 15px;
     color: #fff;
 }
+#showCase img{
+    width: 100%;
+    height: auto;
+}
 #showCase hr{
     border-top: solid 1px #fff;
 }
@@ -196,7 +206,7 @@ nav > ul > li:nth-child(1) img{
     background-color: #fff;
     padding: 10px;
 }
-#bottomShowCase > .col {
+#bottomShowCase > .col, #bottomShowCase > .col-sm-3 {
     font-size: 2.30rem;
     letter-spacing: -3px;
     color: #05668d;
@@ -205,7 +215,7 @@ nav > ul > li:nth-child(1) img{
     text-align: center;
     line-height: 30px;
 }
-#bottomShowCase > .col > p {
+#bottomShowCase > .col > p, #bottomShowCase > .col-sm-3 > p {
     border-radius: 3px;
     box-shadow: 1px 1px 3px rgba(0,0,0,0.5);
     display: block;
@@ -235,7 +245,7 @@ nav > ul > li:nth-child(1) img{
 }
 #order table {
     background-color: #fff;
-    table-layout: fixed;
+    /*table-layout: fixed;*/
 }
 #order td img {
     width: 100%;
@@ -252,6 +262,7 @@ nav > ul > li:nth-child(1) img{
 #cart {
     background-color: rgba(255,255,255,0.9);
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    min-height: 600px;
 }
 .table {
     background-color: #fff;
@@ -260,6 +271,7 @@ fieldset {
     border: solid 1px #d4d4d4;
     padding: 20px;
     margin: 0 0 20px 0;
+    background-color: #fff;
 }
 legend {
     display: inline;
@@ -272,9 +284,6 @@ legend h4 {
 }
 #cart input {
     margin-bottom: 10px;
-}
-#cart form {
-    background-color: #fff;
 }
 #cart .currency {
     font-size: 2.5rem;
@@ -294,8 +303,8 @@ legend h4 {
 td {
     vertical-align: middle;
 }
-td:last-child{
-    text-align: right;
+#contact{
+    min-height: 600px;
 }
 #contact, #confirmation {
     background-color: rgba(255,255,255,0.9);
@@ -303,7 +312,7 @@ td:last-child{
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 #confirmation table{
-	table-layout: fixed;
+	/*table-layout: fixed;*/
 }
 iframe.form-control{
     height: 38px;
@@ -312,4 +321,49 @@ iframe.form-control{
     width: 60px;
     height: auto;
     margin-right: 5px;
+}
+.calendar {
+	border: solid 1px #D4D4D4;
+	border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 1px 1px 3px #ccc;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.calendar td,
+.calendar th {
+	vertical-align: middle;
+	border: solid 1px #d4d4d4;
+	text-align: center;
+	min-width: 30px;
+	height: 30px;
+}
+.calendar td.future span{
+    display: block;
+    color: #777;
+    transition: background-color 0.5s ease, color 0.5s ease;
+    height: 100%;
+    line-height: 30px;
+}
+.calendar td.future span.selected, .calendar td.future span.selected:hover{
+    background-color: #95cc28;
+    color: #fff;
+    font-style: italic;
+}
+.calendar td.future span:hover{
+    background-color: #068aa1;
+    color: #fff;
+    cursor: pointer;
+}
+#cart > .row.empty{
+    min-height: inherit;
+}
+#cart > .row.empty > .col{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+}
+#addToCartForm > div.col-sm-8 > table > tbody > tr > td > img {
+    max-width: 80px;
 }
