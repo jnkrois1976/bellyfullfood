@@ -35,16 +35,22 @@
         <?php if($page_class == 'cart' && $this->config->item('square_enable')): ?>
             <script type="text/javascript" src="https://js.squareup.com/v2/paymentform"></script>
             <script type="text/javascript">
-                var sqPaymentForm = new SqPaymentForm({
-                    <?php if($this->config->item('square_sandbox') == TRUE): ?>
-                        applicationId: 'sandbox-sq0idp-Y4t4qT7gsAFk-76CChKHdQ',
-                    <?php elseif($this->config->item('square_sandbox') == FALSE): ?>
-                        applicationId: 'sq0idp-Y4t4qT7gsAFk-76CChKHdQ',
-                    <?php endif; ?>
+                <?php if($this->config->item('square_sandbox') == TRUE): ?>
+                    var applicationId = 'sandbox-sq0idp-Y4t4qT7gsAFk-76CChKHdQ';
+                <?php elseif($this->config->item('square_sandbox') == FALSE): ?>
+                    var applicationId = 'sq0idp-Y4t4qT7gsAFk-76CChKHdQ';
+                <?php endif; ?>
+                var paymentForm = new SqPaymentForm({
+                    applicationId: applicationId,
                     inputClass: 'sq-input',
+                    inputStyles: [
+                        {
+                            fontSize: '15px'
+                        }
+                    ],
                     cardNumber: {
                         elementId: 'sq-card-number',
-                        placeholder: "0000 0000 0000 0000"
+                        placeholder: '•••• •••• •••• ••••'
                     },
                     cvv: {
                         elementId: 'sq-cvv',
@@ -55,22 +61,12 @@
                         placeholder: 'MM/YY'
                     },
                     postalCode: {
-                        elementId: 'sq-postal-code',
-                        placeholder: 'Postal Code'
+                        elementId: 'sq-postal-code'
                     },
-                    inputStyles: [
-                        {
-                            fontSize: '14px',
-                            padding: '3px'
-                        },
-                        {
-                            mediaMaxWidth: '400px',
-                            fontSize: '18px',
-                        }
-                    ],
                     callbacks: {
                         cardNonceResponseReceived: function(errors, nonce, cardData) {
                             if (errors) {
+                                //console.log("Encountered errors:");
                                 var errorDiv = document.getElementById('errors');
                                 errorDiv.innerHTML = "";
                                 errorDiv.style.display = "block";
@@ -80,14 +76,14 @@
                                     errorDiv.appendChild(p);
                                 });
                             } else {
-                                var nonceField = document.getElementById('card-nonce');
-                                nonceField.value = nonce;
+                                //console.log('Nonce received: ' + nonce);
+                                document.getElementById('card-nonce').value = nonce;
                                 var values = {
                                     nonce_value: nonce,
                                     dollar_amount: $("#serviceTotal").val()
                                 };
                                 $.ajax({
-                                    url: '/site/authorize_card',
+                                    url: 'site/authorize_card',
                                     data: values,
                                     type: 'POST',
                                     dataType: 'json',
@@ -104,13 +100,34 @@
                                 });
                             }
                         },
+
                         unsupportedBrowserDetected: function() {
-                            // Alert the buyer that their browser is not supported
+                        },
+                        inputEventReceived: function(inputEvent) {
+                            switch (inputEvent.eventType) {
+                                case 'focusClassAdded':
+                                break;
+                                case 'focusClassRemoved':
+                                break;
+                                case 'errorClassAdded':
+                                break;
+                                case 'errorClassRemoved':
+                                break;
+                                case 'cardBrandChanged':
+                                break;
+                                case 'postalCodeChanged':
+                                break;
+                            }
+                        },
+
+                        paymentFormLoaded: function() {
+                        // prepopulate form 
                         }
                     }
                 });
-                function submitButtonClick() {
-                    sqPaymentForm.requestCardNonce();
+                function requestCardNonce(event) {
+                    event.preventDefault();
+                    paymentForm.requestCardNonce();
                 }
             </script>
         <?php endif; ?>

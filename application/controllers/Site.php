@@ -74,85 +74,66 @@ class Site extends CI_Controller {
 		require 'vendor/autoload.php';
 		if($this->config->item('square_sandbox') == TRUE){
             $location_id = 'CBASEEg5rewNq27HHcoz-gV-6WIgAQ';
-    		$access_token = 'Bearer sandbox-sq0atb-Mu5w72FrcF7b2b5JeZ74nQ';
+    		$access_token = 'sandbox-sq0atb-Mu5w72FrcF7b2b5JeZ74nQ';
         }elseif($this->config->item('square_sandbox') == FALSE){
             $location_id = '8YCM7KPQPJK4P';
     		$access_token = 'Bearer sq0atp-Q2uCkPFJeXG_Z-WzQ9GbkQ';
         }
 		$nonce = $_POST['nonce_value'];
+		if ($_SERVER['REQUEST_METHOD'] != 'POST') {
+			error_log("Received a non-POST request");
+			echo "Request not allowed";
+			http_response_code(404);
+			return;
+		}
+		if (is_null($nonce)) {
+			echo "Invalid card data";
+			http_response_code(422);
+			return;
+		}
 		SquareConnect\Configuration::getDefaultConfiguration()->setAccessToken($access_token);
 		$transactions_api = new \SquareConnect\Api\TransactionsApi();
 		$request_body = array (
 			"card_nonce" => $nonce,
 			"amount_money" => array (
-				"amount" => 100,
+				"amount" => $_POST['dollar_amount'] * 100,
 				"currency" => "USD"
 			),
 			"idempotency_key" => uniqid()
 		);
 		try {
-			print_r($transactions_api->charge($location_id, $request_body));
-		} catch (Exception $e) {
-			echo "Caught exception " . $e->getMessage();
+            $response = array('transaction_status' => "", 'transaction_id' => "");
+			$result = $transactions_api->charge($location_id, $request_body);
+            $transaction_status = (array) $result['transaction']['tenders'][0]['card_details']['status'];
+            $response['transaction_status'] = $transaction_status[0];
+			$resultArray = (array) $result['transaction']['id'];
+			if($resultArray != null){
+                $response['transaction_id'] = $resultArray[0];
+				echo json_encode($response);
+			}
+		} catch (\SquareConnect\ApiException $e) {
+			$result = (array) $e->getResponseBody();
+		    $resultCode = (array) $result['errors'][0];
+			switch ($resultCode['code']) {
+				case 'VERIFY_CVV_FAILURE':
+					$error_message = "The CVV code you provided is not valid";
+					break;
+				case 'VERIFY_AVS_FAILURE':
+					$error_message = "The zip code you provided is not valid";
+					break;
+				case 'INVALID_EXPIRATION':
+					$error_message = "The expiration date you provided is not valid";
+					break;
+                case 'CARD_DECLINED':
+                    $error_message = "Card declined. Please contact your bank";
+                    break;
+				default:
+					$error_message = "There was an error processing the card";
+					break;
+			}
+            $error_response = array("error_message" => $error_message, 'error_code' => $resultCode['code']);
+			echo json_encode($error_response);
 		}
-		// if ($_SERVER['REQUEST_METHOD'] != 'POST') {
-		// 	error_log("Received a non-POST request");
-		// 	echo "Request not allowed";
-		// 	http_response_code(404);
-		// 	return;
-		// }
-		// if (is_null($nonce)) {
-		// 	echo "Invalid card data";
-		// 	http_response_code(422);
-		// 	return;
-		// }
-		// SquareConnect\Configuration::getDefaultConfiguration()->setAccessToken($access_token);
-		// $transaction_api = new \SquareConnect\Api\TransactionsApi();
-		// $request_body = array (
-		// 	"card_nonce" => $nonce,
-		// 	"amount_money" => array (
-		// 		"amount" => $_POST['dollar_amount'] * 100,
-		// 		"currency" => "USD"
-		// 	),
-		// 	"idempotency_key" => uniqid()
-		// );
-		// try {
-        //     $response = array('transaction_status' => "", 'transaction_id' => "");
-		// 	$result = $transaction_api->charge($access_token, $location_id, $request_body);
-        //     $transaction_result = (array) $result['transaction'];
-        //     $this->session->set_userdata("transaction_result", serialize($transaction_result));
-        //     $transaction_status = (array) $result['transaction']['tenders'][0]['card_details']['status'];
-        //     $response['transaction_status'] = $transaction_status[0];
-		// 	$resultArray = (array) $result['transaction']['id'];
-		// 	if($resultArray != null){
-        //         $response['transaction_id'] = $resultArray[0];
-        //         $this->session->set_userdata("transaction_id", $resultArray[0]);
-        //         $this->session->unset_userdata('quoteId');
-		// 		echo json_encode($response);
-		// 	}
-		// } catch (\SquareConnect\ApiException $e) {
-		// 	$result = (array) $e->getResponseBody();
-		//     $resultCode = (array) $result['errors'][0];
-		// 	switch ($resultCode['code']) {
-		// 		case 'VERIFY_CVV_FAILURE':
-		// 			$error_message = "The CVV code you provided is not valid";
-		// 			break;
-		// 		case 'VERIFY_AVS_FAILURE':
-		// 			$error_message = "The zip code you provided is not valid";
-		// 			break;
-		// 		case 'INVALID_EXPIRATION':
-		// 			$error_message = "The expiration date you provided is not valid";
-		// 			break;
-        //         case 'CARD_DECLINED':
-        //             $error_message = "Card declined. Please contact your bank";
-        //             break;
-		// 		default:
-		// 			$error_message = "There was an error processing the card";
-		// 			break;
-		// 	}
-        //     $error_response = array("error_message" => $error_message, 'error_code' => $resultCode['code']);
-		// 	echo json_encode($error_response);
-		// }
 
 	}
 

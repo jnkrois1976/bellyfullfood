@@ -2,10 +2,6 @@
     setlocale(LC_MONETARY, 'en_US');
     $meal_cookie = $this->input->cookie('mealInCart');
     $parse_cookie = ($meal_cookie != null)? json_decode($meal_cookie): null;
-    // echo "<pre>";
-    // print_r($parse_cookie->meals);
-    // echo "</pre>";
-    //$post_data = ($this->input->post('meals'))? $this->input->post('meals'): $parse_cookie->meals;
     if($this->input->post('meals') != null){
         $post_data = $this->input->post('meals');
     }elseif ($meal_cookie) {
@@ -168,7 +164,7 @@
                                     </div>
                                     <div class="col-sm-4">
                                         <input value="" type="text" id="sq-postal-code" name="sq-postal-code" class="form-control" placeholder="Zip Code" required="required" />
-                                        <input type="hidden" id="card-nonce" name="nonce">
+                                        <input type="hidden" id="card-nonce" name="nonce_value">
                                     </div>
                                 </div>
                             </div>
@@ -212,9 +208,10 @@
                                 </tr>
                             </tbody>
                         </table>
+                        <div id="errors" style="display:none;"></div>
                         <?php if($post_data): ?>
-                            <button type="submit" form="cartForm" class="btn btn-primary btn-lg btn-block">Place order</button>
-                            <!-- <button onclick="submitButtonClick()" type="submit" class="btn btn-primary btn-lg btn-block">Place order</button> -->
+                            <!-- <button type="submit" form="cartForm" class="btn btn-primary btn-lg btn-block">Place order</button> -->
+                            <button onclick="requestCardNonce(event)" type="submit" class="btn btn-primary btn-lg btn-block">Place order</button>
                         <?php endif; ?>
                     </div>
                 </div>
