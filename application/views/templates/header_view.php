@@ -14,6 +14,7 @@
         <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Kalam" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
         <link rel="stylesheet" href="/css/layout.css">
         <link rel="stylesheet" href="/css/format.css">
@@ -32,16 +33,14 @@
         </header>
         <div class="navWrapper">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                <!-- <span class="navbar-toggler-icon"></span> -->
-                <img class="navbar-toggler-icon" src="/img/ic_menu_black_24px.svg" alt="Menu" />
+                <span class="navbar-toggler-icon"></span>
+                <!-- <img class="navbar-toggler-icon" src="/img/ic_menu_black_24px.svg" alt="Menu" /> -->
             </button>
             <nav class="container collapse" id="navbarToggleExternalContent">
-
-                <!-- <img src="/img/ic_menu_black_24px.svg" alt="Menu" /> -->
                 <ul class="row">
-                    <li class="col d-flex align-items-center justify-content-center">
+                    <!-- <li class="col d-flex align-items-center justify-content-center">
                         <img src="/img/belly_full_logo_small.jpg" alt="BellyFullFoods.com" title="BellyFullFoods" />
-                    </li>
+                    </li> -->
                     <li class="col d-flex align-items-center justify-content-center">
                         <a href="/home">Home</a>
                     </li>
@@ -69,7 +68,7 @@
         <div id="infoBanner" class="container-fluid">
             <div class="row">
                 <div class="col d-flex align-items-center justify-content-center">
-                    <h4>Currently serving Boca Raton and Coral Springs</h4>
+                    <h4>Currently serving Boca Raton, Delray Beach, Coral Springs and Parkland</h4>
                 </div>
             </div>
         </div>

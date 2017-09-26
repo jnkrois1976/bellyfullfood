@@ -1,17 +1,13 @@
 <div class="container">
   <div id="showCase" class="row">
-    <div class="col-sm-4">
-      <h1>Belly Full</h1>
-      <hr />
-      <h3>Healthy Meal Delivery Service</h3>
-      <hr />
-      <p>Get your meals delivered to you all at once in just two days!</p>
-      <div class="card">
-        <div class="card-body">
-          <h4 class="card-title">Limited time offer</h4>
-          <p class="card-text">Order NOW and get free delivery on all orders.</p>
-          <a href="/order" class="btn btn-primary w-100">Order Now</a>
-        </div>
+    <div class="col-sm-4 d-flex">
+        <div class="card">
+            <img class="card-img-top" src="/img/belly_full_logo_mid.jpg" alt="BellyFullFoods.com">
+            <div class="card-body">
+                <h3 class="card-title cursive">Healthy Meals Delivered</h3>
+                <p class="card-text">Get your meals delivered to you all at once in just two days!</p>
+                <a href="/order" class="btn btn-primary w-100">Order Now</a>
+            </div>
       </div>
     </div>
     <div class="col-sm-8">
@@ -72,16 +68,13 @@
     </div>
   </div> -->
   <div id="bottomShowCase" class="row">
-    <div class="col-sm-3">
-      <p class="d-flex align-items-center justify-content-center">Non-GMO</p>
+    <div class="col-sm-4">
+      <p class="d-flex align-items-center justify-content-center">Organic/Non-GMO</p>
     </div>
-    <div class="col-sm-3">
-      <p class="d-flex align-items-center justify-content-center">Organic</p>
-    </div>
-    <div class="col-sm-3">
+    <div class="col-sm-4">
       <p class="d-flex align-items-center justify-content-center">Free Delivery</p>
     </div>
-    <div class="col-sm-3">
+    <div class="col-sm-4">
       <p class="d-flex align-items-center justify-content-center">Only the Freshest Ingredients</p>
     </div>
   </div>

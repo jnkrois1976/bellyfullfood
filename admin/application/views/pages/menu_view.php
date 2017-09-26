@@ -8,6 +8,7 @@
                     <tr>
                         <th>Name</th>
                         <th>Description</th>
+                        <th>Price</th>
                         <th>Image</th>
                         <th>Ingredients</th>
                         <th>Heating instructions</th>
@@ -26,6 +27,11 @@
                             <td>
                                 <div class="form-group">
                                     <textarea class="form-control" name="meal_desc"></textarea>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <textarea class="form-control" name="meal_price"></textarea>
                                 </div>
                             </td>
                             <td>
@@ -75,6 +81,7 @@
                         <th>#</th>
                         <th>Name</th>
                         <th>Description</th>
+                        <th>Price</th>
                         <th>Image</th>
                         <th>Ingredients</th>
                         <th>Heating instructions</th>
@@ -97,6 +104,11 @@
                             <td>
                                 <div class="form-group">
                                     <textarea class="form-control" name="meal_desc" onchange="APP.events.enableSubmit(event)" onblur="APP.events.disableInput(event)" ondblclick="APP.events.editInputEvent(event)" readonly><?=$get_meals_row->meal_desc?></textarea>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <textarea class="form-control" name="meal_price" onchange="APP.events.enableSubmit(event)" onblur="APP.events.disableInput(event)" ondblclick="APP.events.editInputEvent(event)" readonly><?=$get_meals_row->meal_price?></textarea>
                                 </div>
                             </td>
                             <td>

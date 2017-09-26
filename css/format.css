@@ -26,3 +26,6 @@ button.btn-primary:disabled{
 	background-color: #999;
 	border-color: #999;
 }
+.cursive{
+	font-family: 'Kalam', cursive;
+}
