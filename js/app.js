@@ -4,7 +4,13 @@ var APP = APP || {},
 
 DATA.order = {
     currentSelections: []
-}
+};
+DATA.cityZipCodes = {
+    'boca': ['33427','33428','33429','33431','33432','33433','33434','33464','33481','33486','33487','33488','33496','33497','33498','33499'],
+    'delray': ['33444','33445','33446','33448','33482','33483','33484'],
+    'coral': ['33065','33067','33071','33073','33075','33076','33077'],
+    'parkland': ['33067','33073','33076']
+};
 
 MODEL.elems = {
     mealQty: document.getElementsByClassName('mealQty'),
@@ -16,8 +22,16 @@ MODEL.elems = {
     calendar: document.getElementById('pickUpDate'),
     pickUpDateStatic: document.getElementById('pickUpDate'),
     rawDate: document.getElementById('rawDate'),
-    errorMessage: document.getElementById('errorMessage')
-}
+    errorMessage: document.getElementById('errorMessage'),
+    deliveryFields: document.getElementsByClassName('deliveryAddress'),
+    billingAddress: document.getElementsByClassName('billingAddress'),
+    billingField: document.getElementsByClassName(' billingField'),
+    deliveryZip: document.getElementById('deliveryZip'),
+    taxRateInput: document.getElementById('taxRate'),
+    serviceTotal: document.getElementById('serviceTotal'),
+    taxesDisplay: document.getElementById('taxesDisplay'),
+    totalDisplay: document.getElementById('totalDisplay')
+};
 
 APP.events = {
     calculateMealsQty: function(event){
@@ -116,8 +130,58 @@ APP.events = {
         if(MODEL.elems.addToCartBtn){
             MODEL.elems.addToCartBtn.addEventListener('click', this.addToCart, false);
         }
+    },
+    toggleDeliveryFields: function(event){
+        var inputState = event.target.checked,  billingField = MODEL.elems. billingField;
+        if(inputState){
+            MODEL.elems.billingAddress[0].style.display='none';
+            MODEL.elems.billingAddress[1].style.display='none';
+            for(var i = 0; i < billingField.length; i++){
+                billingField[i].removeAttribute('required');
+            }
+        }else{
+            MODEL.elems.billingAddress[0].style.display='flex';
+            MODEL.elems.billingAddress[1].style.display='flex';
+            for(var i = 0; i < billingField.length; i++){
+                billingField[i].setAttribute('required', '');
+            }
+        }
+    },
+    updateTaxRate: function(selectedCity){
+        var parsedTotal =  parseInt(MODEL.elems.serviceTotal.value),
+            taxes = '',
+            parsedTaxes = '',
+            totalWithTax = '';
+        if(selectedCity == "boca" || selectedCity == "delray"){
+            taxes = parsedTotal * .07;
+        }else{
+            taxes = parsedTotal * .06;
+        }
+        parsedTaxes = parseFloat(Math.round(taxes * 100) / 100).toFixed(2);
+        totalWithTax = parsedTotal + parsedTaxes;
+        MODEL.elems.taxesDisplay.textContent='$'+ parsedTaxes
+        MODEL.elems.serviceTotal.value=totalWithTax;
+        MODEL.elems.totalDisplay.textContent='$'+totalWithTax;
+    },
+    updateZipCode: function(event){
+        var selectedCity = event.target.value, 
+            deliveryZipSelect = MODEL.elems.deliveryZip,
+            cityZipObj = DATA.cityZipCodes[selectedCity],
+            newZipOptElem,
+            newZipOptText;
+        APP.events.updateTaxRate(selectedCity);
+        while (deliveryZipSelect.hasChildNodes()) {
+            deliveryZipSelect.removeChild(deliveryZipSelect.lastChild);
+        }
+        for(var i = 0; i < cityZipObj.length; i++){
+            newZipOptText = document.createTextNode(cityZipObj[i]);
+            newZipOptElem = document.createElement('option');
+            newZipOptElem.setAttribute('value', cityZipObj[i]);
+            newZipOptElem.appendChild(newZipOptText);
+            deliveryZipSelect.appendChild(newZipOptElem);
+        }
     }
-}
+};
 
 APP.events.mealQtyListener();
 APP.events.pickupDate();

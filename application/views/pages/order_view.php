@@ -13,6 +13,7 @@
                         <thead>
                             <tr>
                                 <th colspan="2">Meal </th>
+                                <th>Price</th>
                                 <th>Quantity</th>
                             </tr>
                         </thead>
@@ -21,6 +22,10 @@
                                 <tr>
                                     <td><img src="<?=$get_meals_row->meal_img_name?>" alt="<?=$get_meals_row->meal_title?>"></td>
                                     <td class="align-middle"><h5><?=$get_meals_row->meal_title?></h5></td>
+                                    <td class="align-right">
+                                        $<?=money_format('%i', $get_meals_row->meal_price)?>
+                                        <input type="hidden" name="prices[]" value="<?=$get_meals_row->meal_price?>" />
+                                    </td>
                                     <td class="align-middle text-center">
                                         <input name="meals[]" data-mealname="<?=$get_meals_row->meal_title?>" class="mealQty" <?=(!$get_meals_row->meal_enable)? 'disabled': null?> type="number" data-mealid="<?=$get_meals_row->meal_id?>" min="0" max="9" value="0" />
                                     </td>
