@@ -25,7 +25,7 @@
                     <td class="text-center"><?=$break_meal[0]?></td>
                     <td class="text-left"><?=$break_meal[1]?></td>
                     <?php if($i == 0): ?>
-                        <td rowspan="<?=count($meals)?>" class="currency">$<?=money_format('%i', $last_order['order_dollar_amount'])?></td>
+                        <td rowspan="<?=count($meals)?>" class="currency">$<?=money_format('%i', $last_order['order_dollar_amount']+$last_order['order_taxes_amount'])?></td>
                     <?php endif; ?>
                 </tr>
             <?php endfor; ?>
