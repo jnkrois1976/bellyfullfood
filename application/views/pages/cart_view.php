@@ -246,9 +246,15 @@ $total_meals = 0;
                             <button onclick="requestCardNonce(event)" type="submit" class="btn btn-primary btn-lg btn-block">Place order</button>
                         </div>
                     </div>
+                    <div style="width: 164px; height: 98px;">
+                        <a href="#" onclick="window.open('https://www.sitelock.com/verify.php?site=www.bellyfullfoods.com','SiteLock','width=600,height=600,left=160,top=170');" >
+                            <img class="img-responsive" alt="SiteLock" title="SiteLock" src="//shield.sitelock.com/shield/www.bellyfullfoods.com" />
+                        </a>
+                    </div>
                 </div>
             </div>
         </form>
+        
     <?php elseif(!$meals_data): ?>
         <div class="row empty">
             <div class="col text-center">
