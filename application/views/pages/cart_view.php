@@ -16,6 +16,12 @@ $meal_names = array_values($meal_names);
 $total_price = 0;
 $total_meals = 0;
 ?>
+<div id="loading" class="loading">
+    <figure>
+        <img src="/img/loading.svg" alt="Processing. Please wait..." />
+        <figcaption>Processing. Please wait...</figcaption>
+    </figure>
+</div>
 <div id="cart" class="container">
     <?php if($meals_data): ?>
         <form id="cartForm" method="post" action="/place_order">
@@ -70,7 +76,7 @@ $total_meals = 0;
                                     </div>
                                     <div class="form-row deliveryAddress">
                                         <div class="col-sm-4">
-                                            <select class="custom-select w-100" onchange="APP.events.updateZipCode(event)" name="delivery_locality" placeholder="Select your city" required>
+                                            <select class="custom-select w-100 form-control" onchange="APP.events.updateZipCode(event)" name="delivery_locality" placeholder="Select your city" required>
                                                 <option value=""></option>
                                                 <option value="Boca Raton">Boca Raton</option>
                                                 <option value="Delray Beach">Delray Beach</option>
@@ -82,7 +88,7 @@ $total_meals = 0;
                                             <input value="FL" readonly class="form-control" name="delivery_administrative_area_level_1" required/>
                                         </div>
                                         <div class="col-sm-4">
-                                            <select id="deliveryZip" class="custom-select w-100" name="delivery_postal_code" required>
+                                            <select id="deliveryZip" class="custom-select w-100 form-control" name="delivery_postal_code" required>
                                                 <option>Zip Code</option>
                                             </select>
                                         </div>
@@ -138,17 +144,17 @@ $total_meals = 0;
                                     <div class="form-row">
                                         <div class="col-sm-4">
                                             <div class="form-group">
-                                                <input value="" class="form-control" id="sq-card-number" name="cardNumber" type="text" placeholder="Credit Card Number" required="required"/>
+                                                <input value="" class="form-control" id="sq-card-number" name="cardNumber" type="text" placeholder="Credit Card Number" required/>
                                             </div>
                                         </div>
                                         <div class="col-sm-3">
-                                            <input value="" id="sq-expiration-date" class="form-control" name="sq-expiration-date" type="text" placeholder="MM/YY" required="required" />
+                                            <input value="" id="sq-expiration-date" class="form-control" name="sq-expiration-date" type="text" placeholder="MM/YY" required />
                                         </div>
                                         <div class="col-sm-2">
-                                            <input value="" class="form-control" id="sq-cvv" name="cardCvv" type="text" placeholder="CVV..." required="required"/>
+                                            <input value="" class="form-control" id="sq-cvv" name="cardCvv" type="text" placeholder="CVV..." required/>
                                         </div>
                                         <div class="col-sm-3">
-                                            <input value="" type="text" id="sq-postal-code" name="sq-postal-code" class="form-control" placeholder="Zip Code" required="required" />
+                                            <input value="" type="text" id="sq-postal-code" name="sq-postal-code" class="form-control" placeholder="Zip Code" required/>
                                             <input type="hidden" id="card-nonce" name="nonce_value">
                                         </div>
                                     </div>
@@ -227,6 +233,9 @@ $total_meals = 0;
                                 <sup>*</sup>Please review our <a href="/faq">deliveries policy</a> for more information.
                             </p>
                             <div id="errors" style="display:none;" class="alert alert-danger" role="alert"></div>
+                            <div id="formFailedMsg" class="alert alert-danger">
+                                Please check the fields! I think you missed something.
+                            </div>
                             <input type="hidden" value="<?=$this->input->post('deliveryTime')?>" name="deliveryTime" />
                             <input type="hidden" value="<?=$this->input->post('rawDate')?>" name="rawDate" />
                             <input type="hidden" value="<?=$this->input->post('formattedDate')?>" name="formattedDate" />

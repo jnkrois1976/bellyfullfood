@@ -50,7 +50,8 @@
                     ],
                     cardNumber: {
                         elementId: 'sq-card-number',
-                        placeholder: '•••• •••• •••• ••••'
+                        placeholder: '•••• •••• •••• ••••',
+                        required: 'required'
                     },
                     cvv: {
                         elementId: 'sq-cvv',
@@ -76,6 +77,7 @@
                                     p.innerHTML = error.message;
                                     errorDiv.appendChild(p);
                                 });
+                                MODEL.elems.loading.style.display='none';
                             } else {
                                 //console.log('Nonce received: ' + nonce);
                                 document.getElementById('card-nonce').value = nonce;
@@ -94,6 +96,7 @@
                                             console.log(success.transaction_status);
                                             document.getElementById('cartForm').submit();
                                         }else if(success.error_message != null){
+                                            MODEL.elems.loading.style.display='none';
                                             $("#errors").text(success.error_message).fadeIn();
                                             return false;
                                         }
@@ -122,13 +125,17 @@
                         },
 
                         paymentFormLoaded: function() {
-                        // prepopulate form 
+                        // prepopulate form
                         }
                     }
                 });
                 function requestCardNonce(event) {
                     event.preventDefault();
-                    paymentForm.requestCardNonce();
+                    var validForm = APP.events.validateFormData();
+                    if(validForm){
+                        MODEL.elems.loading.style.display='flex';
+                        paymentForm.requestCardNonce();
+                    }
                 }
             </script>
         <?php endif; ?>

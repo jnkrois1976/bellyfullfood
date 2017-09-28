@@ -111,7 +111,8 @@ class Site extends CI_Controller {
                 $response['transaction_id'] = $resultArray[0];
 				echo json_encode($response);
 			}
-		} catch (\SquareConnect\ApiException $e) {
+		} catch (Exception $e) {
+			//print_r(var_dump($e));
 			$result = (array) $e->getResponseBody();
 		    $resultCode = (array) $result['errors'][0];
 			switch ($resultCode['code']) {
@@ -141,6 +142,23 @@ class Site extends CI_Controller {
 		$this->load->model('site_model');
 		$place_order = $this->site_model->place_order();
 		if($place_order){
+			if($this->config->item('order_conf_email')){
+				$get_last_order = $this->site_model->get_last_order();
+				$email_template = $this->load->view('includes/confirmation_email_view', array('last_order' => $get_last_order), TRUE);
+				$config['protocol'] = 'smtp';
+				$config['mailpath'] = '/usr/sbin/sendmail';
+				$config['smtp_host'] = 'localhost';;
+				$config['smtp_port'] = 25;
+				$config['mailtype'] = 'html';
+				$this->email->initialize($config);
+				$this->email->from('info@bellyfullfoods.com', 'BellyFullFoods.com');
+				$this->email->to($get_last_order['cust_email']);
+				$this->email->reply_to('noreply@bellyfullfoods.com');
+				$this->email->subject('BellyFullFoods.com - Your oder details');
+				$this->email->message($email_template);
+				$send_message = $this->email->send();
+				$this->email->clear(TRUE);
+			}
 			header('Location: /thank_you');
 		}
 	}
@@ -148,20 +166,6 @@ class Site extends CI_Controller {
 	public function thank_you(){
 		$this->load->model('site_model');
 		$get_last_order = $this->site_model->get_last_order();
-		$email_template = $this->load->view('includes/confirmation_email_view', array('last_order' => $get_last_order), TRUE);
-        $config['protocol'] = 'smtp';
-        $config['mailpath'] = '/usr/sbin/sendmail';
-        $config['smtp_host'] = 'localhost';;
-        $config['smtp_port'] = 25;
-        $config['mailtype'] = 'html';
-        $this->email->initialize($config);
-        $this->email->from('info@bellyfullfoods.com', 'BellyFullFoods.com');
-        $this->email->to($get_last_order['cust_email']);
-        $this->email->reply_to('noreply@bellyfullfoods.com');
-        $this->email->subject('BellyFullFoods.com - Your oder details');
-        $this->email->message($email_template);
-        $send_message = $this->email->send();
-        $this->email->clear(TRUE);
 		$data = array(
 			'page_class' => 'confirmation',
 			'main_content' => 'pages/confirmation_view',

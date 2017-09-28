@@ -32,7 +32,8 @@ MODEL.elems = {
     serviceTotal: document.getElementById('serviceTotal'),
     taxesTotal: document.getElementById('taxesTotal'),
     taxesDisplay: document.getElementById('taxesDisplay'),
-    totalDisplay: document.getElementById('totalDisplay')
+    totalDisplay: document.getElementById('totalDisplay'),
+    loading: document.getElementById('loading')
 };
 
 APP.events = {
@@ -180,6 +181,23 @@ APP.events = {
             newZipOptElem.setAttribute('value', cityZipObj[i]);
             newZipOptElem.appendChild(newZipOptText);
             deliveryZipSelect.appendChild(newZipOptElem);
+        }
+    },
+    validateFormData: function(event){
+        var validateFields = $('[required]').get(), allFieldsComplete = true;
+        for(var i = 0; i < validateFields.length; i++){
+            var fieldState = validateFields[i].validity.valueMissing;
+            var fieldIsValid = validateFields[i].validity.valid;
+            if(fieldState && !fieldIsValid){
+                allFieldsComplete = false;
+                validateFields[i].classList.add('invalid');
+                $("#formFailedMsg").fadeIn();
+                return allFieldsComplete;
+            }
+        }
+        if(allFieldsComplete){
+            $("#formFailedMsg").hide();
+            return allFieldsComplete;
         }
     }
 };
