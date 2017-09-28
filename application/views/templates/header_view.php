@@ -1,6 +1,11 @@
 <!doctype html>
 <html class="no-js" lang="">
     <head>
+        <script language="javascript">
+            if (document.location.protocol != "https:"){
+                document.location.href = "https://bellyfullfoods.com" + document.location.pathname;
+            };
+        </script>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title itemprop='name'>Welcome to BellyFullFoods</title>
