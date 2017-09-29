@@ -111,6 +111,7 @@ class Site extends CI_Controller {
                 $response['transaction_id'] = $resultArray[0];
 				echo json_encode($response);
 			}
+			// print_r(var_dump($result));
 		} catch (Exception $e) {
 			//print_r(var_dump($e));
 			$result = (array) $e->getResponseBody();

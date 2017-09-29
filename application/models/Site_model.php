@@ -54,6 +54,8 @@
             }
             $data = array(
                 'order_number' => $random,
+                'transaction_status' => $this->input->post('transactionStatus'),
+                'transaction_id' => $this->input->post('transactionId'),
                 'order_date' => date("Y-m-d H:i:s"),
                 'delivery_date' => $this->input->post('formattedDate'),
                 'delivery_time' => $this->input->post('deliveryTime'),

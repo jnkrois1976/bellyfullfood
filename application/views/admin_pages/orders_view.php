@@ -13,6 +13,8 @@
                 <?php foreach($get_orders as $get_orders_row): ?>
                     <tr>
                         <td><?=$get_orders_row->order_number?></td>
+                        <td><?=$get_orders_row->transaction_status?></td>
+                        <td><?=$get_orders_row->transaction_id?></td>
                         <td><?=$get_orders_row->order_date?></td>
                         <td><?=$get_orders_row->delivery_date?></td>
                         <td>

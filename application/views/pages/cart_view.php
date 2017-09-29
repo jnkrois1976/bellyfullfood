@@ -236,12 +236,14 @@ $total_meals = 0;
                             <div id="formFailedMsg" class="alert alert-danger">
                                 Please check the fields! I think you missed something.
                             </div>
-                            <input type="hidden" value="<?=$this->input->post('deliveryTime')?>" name="deliveryTime" />
+                            <input type="hidden" value="<?=date_format($date, 'g:i A')?>" name="deliveryTime" />
                             <input type="hidden" value="<?=$this->input->post('rawDate')?>" name="rawDate" />
-                            <input type="hidden" value="<?=$this->input->post('formattedDate')?>" name="formattedDate" />
+                            <input type="hidden" value="<?=($this->input->post('formattedDate') != null)? $this->input->post('formattedDate'): $parse_cookie->formattedDate?>" name="formattedDate" />
                             <input type="hidden" value="<?=money_format('%i', $total_price)?>" name="orderTotal" id="orderTotal" />
                             <input type="hidden" value="" name="taxesTotal" id="taxesTotal">
                             <input type="hidden" value="<?=$total_price?>" name="serviceTotal" id="serviceTotal" />
+                            <input type="hidden" name="transactionStatus" id="transactionStatus" value="">
+                            <input type="hidden" name="transactionId" id="transactionId" value="">
                             <!-- <button type="submit" form="cartForm" class="btn btn-primary btn-lg btn-block">Place order</button> -->
                             <button onclick="requestCardNonce(event)" type="submit" class="btn btn-primary btn-lg btn-block">Place order</button>
                         </div>

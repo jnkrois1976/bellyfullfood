@@ -92,8 +92,8 @@
                                     dataType: 'json',
                                     success: function(success){
                                         if(success.transaction_id != null){
-                                            console.log(success.transaction_id);
-                                            console.log(success.transaction_status);
+                                            $("#transactionId").val(success.transaction_id);
+                                            $("#transactionStatus").val(success.transaction_status);
                                             document.getElementById('cartForm').submit();
                                         }else if(success.error_message != null){
                                             MODEL.elems.loading.style.display='none';
