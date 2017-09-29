@@ -10,6 +10,20 @@
     <div class="row">
         <div class="col">
             <table class="table table-striped table-bordered">
+                <tr>
+                    <th>Order #</th>
+                    <th>Status</th>
+                    <th>Transaction ID</th>
+                    <th>Order date</th>
+                    <th>Delivery date</th>
+                    <th>Delivery time</th>
+                    <th>Meals</th>
+                    <th>Total</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Delivery address</th>
+                </tr>
                 <?php foreach($get_orders as $get_orders_row): ?>
                     <tr>
                         <td><?=$get_orders_row->order_number?></td>
@@ -35,9 +49,9 @@
                         <td><?=$get_orders_row->cust_email?></td>
                         <td><?=$get_orders_row->cust_phone?></td>
                         <td>
-                            <?=$get_orders_row->cust_street_number.' '.$get_orders_row->cust_street_name?>.<br />
-                            <?=($get_orders_row->cust_apt_number != '')? $get_orders_row->cust_apt_number."<br />": null?>
-                            <?=$get_orders_row->cust_city.', '.$get_orders_row->cust_state.' '.$get_orders_row->cust_zip?>
+                            <?=$get_orders_row->delivery_street_number.' '.$get_orders_row->delivery_street_name?>.<br />
+                            <?=($get_orders_row->delivery_apt_number != '')? $get_orders_row->delivery_apt_number."<br />": null?>
+                            <?=$get_orders_row->delivery_city.', '.$get_orders_row->delivery_state.' '.$get_orders_row->delivery_zip?>
                         </td>
                     </tr>
                 <?php endforeach; ?>
