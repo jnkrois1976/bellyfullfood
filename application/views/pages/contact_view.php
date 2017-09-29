@@ -24,15 +24,15 @@
                                     <div class="col">
                                         <div class="form-group">
                                             <label>Name</label>
-                                            <input value="Juan Rois" type="text" class="form-control" name="customerName" placeholder="full name" required/>
+                                            <input value="" type="text" class="form-control" name="customerName" placeholder="full name" required/>
                                         </div>
                                         <div class="form-group">
                                             <label>Email address</label>
-                                            <input value="jnkrois@gmail.com" type="email" class="form-control" name="customerEmail" placeholder="name@example.com" required/>
+                                            <input value="" type="email" class="form-control" name="customerEmail" placeholder="name@example.com" required/>
                                         </div>
                                         <div class="form-group">
                                             <label>Phone Number</label>
-                                            <input value="305-496-1989" type="phone" class="form-control" name="customerPhone" placeholder="phone number" required/>
+                                            <input value="" type="phone" class="form-control" name="customerPhone" placeholder="phone number" required/>
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleFormControlTextarea1">Your message</label>

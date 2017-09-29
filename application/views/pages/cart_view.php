@@ -44,13 +44,13 @@ $total_meals = 0;
                                     </div>
                                     <div class="form-row">
                                         <div class="col-sm-4">
-                                            <input value="Juan Rois" type="text" class="form-control" name="customerName" placeholder="full name" required/>
+                                            <input value="" type="text" class="form-control" name="customerName" placeholder="full name" required/>
                                         </div>
                                         <div class="col-sm-4">
-                                            <input value="jnkrois@gmail.com" type="email" class="form-control" name="customerEmail" placeholder="name@example.com" required/>
+                                            <input value="" type="email" class="form-control" name="customerEmail" placeholder="name@example.com" required/>
                                         </div>
                                         <div class="col-sm-4">
-                                            <input value="305-496-1989" type="phone" class="form-control" name="customerPhone" placeholder="phone number" required/>
+                                            <input value="" type="phone" class="form-control" name="customerPhone" placeholder="Phone number" required/>
                                         </div>
                                     </div>
                                 </div>
@@ -65,10 +65,10 @@ $total_meals = 0;
                                     </div>
                                     <div class="form-row deliveryAddress">
                                         <div class="col-sm-4">
-                                            <input value="9045" class="form-control" name="delivery_street_number" placeholder="Street number" required/>
+                                            <input value="" class="form-control" name="delivery_street_number" placeholder="Street number" required/>
                                         </div>
                                         <div class="col-sm-4 d-flex align-items-end">
-                                            <input value="Watercrest Cir W" class="form-control" name="delivery_route" placeholder="Street name" required/>
+                                            <input value="" class="form-control" name="delivery_route" placeholder="Street name" required/>
                                         </div>
                                         <div class="col-sm-4 d-flex align-items-end">
                                             <input class="form-control" name="delivery_shippingAptNumber" placeholder="Apt number"/>
@@ -107,10 +107,10 @@ $total_meals = 0;
                                     </div>
                                     <div class="form-row billingAddress">
                                         <div class="col-sm-4">
-                                            <input value="9045" class="form-control billingField" name="street_number" placeholder="Street number" />
+                                            <input value="" class="form-control billingField" name="street_number" placeholder="Street number" />
                                         </div>
                                         <div class="col-sm-4 d-flex align-items-end">
-                                            <input value="Watercrest Cir W" class="form-control billingField" name="route" placeholder="Street name"/>
+                                            <input value="" class="form-control billingField" name="route" placeholder="Street name"/>
                                         </div>
                                         <div class="col-sm-4 d-flex align-items-end">
                                             <input class="form-control" name="shippingAptNumber" placeholder="Apt number"/>
@@ -118,13 +118,13 @@ $total_meals = 0;
                                     </div>
                                     <div class="form-row billingAddress">
                                         <div class="col-sm-4">
-                                            <input value="Parkland" class="form-control billingField" name="locality" placeholder="City" />
+                                            <input value="" class="form-control billingField" name="locality" placeholder="City" />
                                         </div>
                                         <div class="col-sm-4">
-                                            <input value="FL" class="form-control billingField" name="administrative_area_level_1" placeholder="State" />
+                                            <input value="" class="form-control billingField" name="administrative_area_level_1" placeholder="State" />
                                         </div>
                                         <div class="col-sm-4">
-                                            <input value="33076" class="form-control billingField" name="postal_code" placeholder="Zip code"/>
+                                            <input value="" class="form-control billingField" name="postal_code" placeholder="Zip code"/>
                                         </div>
                                     </div>
                                     <hr />
@@ -246,15 +246,22 @@ $total_meals = 0;
                             <button onclick="requestCardNonce(event)" type="submit" class="btn btn-primary btn-lg btn-block">Place order</button>
                         </div>
                     </div>
-                    <div style="width: 164px; height: 98px;">
-                        <a href="#" onclick="window.open('https://www.sitelock.com/verify.php?site=www.bellyfullfoods.com','SiteLock','width=600,height=600,left=160,top=170');" >
-                            <img class="img-responsive" alt="SiteLock" title="SiteLock" src="//shield.sitelock.com/shield/www.bellyfullfoods.com" />
-                        </a>
+                    <div class="form-row">
+                        <div class="col-sm-6 text-center">
+                            <div style="width: 164px; height: 98px;">
+                                <a href="#" onclick="window.open('https://www.sitelock.com/verify.php?site=www.bellyfullfoods.com','SiteLock','width=600,height=600,left=160,top=170');" >
+                                    <img class="img-responsive" alt="SiteLock" title="SiteLock" src="//shield.sitelock.com/shield/www.bellyfullfoods.com" />
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 text-center">
+                            <img src="/img/pay-with-square.png" alt="Powered by Square" style="height:80px; width: auto;" />
+                        </div>
                     </div>
                 </div>
             </div>
         </form>
-        
+
     <?php elseif(!$meals_data): ?>
         <div class="row empty">
             <div class="col text-center">

@@ -29,10 +29,8 @@
     <body class="<?=$page_class?>">
         <header class="container-fluid">
             <div class="row">
-                <div class="col text-right">
-                    <a href="#">Login</a>
-                    <a href="#">My Cart</a>
-                    <a href="#">Language</a>
+                <div class="col d-flex align-items-center justify-content-center">
+                    <h4 class="cursive mt-2">BellyFullFoods - Your Healthy Meal Delivery Service</h4>
                 </div>
             </div>
         </header>
@@ -59,7 +57,7 @@
                         <a href="/order">Order</a>
                     </li>
                     <li class="col d-flex align-items-center justify-content-center">
-                        <a href="/cart">Cart</a>
+                        <a href="/cart">Cart&nbsp;</a>
                         <?php if($this->input->cookie('mealInCart')): ?>
                             <span class="badge badge-primary"> 1</span>
                         <?php endif; ?>
@@ -73,7 +71,7 @@
         <div id="infoBanner" class="container-fluid">
             <div class="row">
                 <div class="col d-flex align-items-center justify-content-center">
-                    <h4>Currently serving Boca Raton, Delray Beach, Coral Springs and Parkland</h4>
+                    <h4 class="cursive" style="margin-bottom: 0;">Currently serving Boca Raton, Delray Beach, Coral Springs and Parkland</h4>
                 </div>
             </div>
         </div>

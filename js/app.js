@@ -37,6 +37,15 @@ MODEL.elems = {
 };
 
 APP.events = {
+    editInputEvent: function(event){
+        event.target.removeAttribute('readonly');
+    },
+    disableInput: function(event){
+        event.target.setAttribute('readonly', '');
+    },
+    enableSubmit: function(event){
+        event.target.form.elements['submit'].removeAttribute('disabled');
+    },
     calculateMealsQty: function(event){
         var mealQtyElems = MODEL.elems.mealQty, qtyElemValue = 0, target = event.target, mealSelected;
         DATA.order.currentSelections.forEach(function(item, index, array){
@@ -119,9 +128,9 @@ APP.events = {
         }
     },
     addToCart: function(event){
-        event.preventDefault();
         var dateSet = MODEL.elems.rawDate.value;
         if(dateSet.length == 0){
+            event.preventDefault();
             MODEL.elems.errorMessage.textContent='Please select a delivery date';
             MODEL.elems.errorMessage.classList.remove('d-none');
             return false;

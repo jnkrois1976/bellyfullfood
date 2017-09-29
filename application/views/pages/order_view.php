@@ -57,7 +57,15 @@
                                 <div id="errorMessage" class="d-none alert alert-danger" role="alert"></div>
                             </div>
                             <div class="form-group">
-                                <input type="time" class="form-control" value="08:00" name="deliveryTime" min="08:00" max="18:00" required />
+                                <!-- <input type="time" class="form-control" value="08:00" name="deliveryTime" min="08:00" max="18:00" required /> -->
+                                <select class="form-control" name="deliveryTime">
+                                    <?php for($i = 8; $i < 19; $i++):?>
+                                        <?php $date = date_create($i.':00'); ?>
+                                        <?php $formattedDate = date_format($date, 'g:i');?>
+                                        <?php $displayDate = date_format($date, 'g:i A');?>
+                                        <option value="<?=$i?>:00"><?=$displayDate?></option>
+                                    <?php endfor; ?>
+                                </select>
                             </div>
                             <input type="hidden" value="" id="rawDate" name="rawDate" />
                             <input type="hidden" value="" id="formattedDate" name="formattedDate" />

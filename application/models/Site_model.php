@@ -28,7 +28,7 @@
             $cookie = array(
                 'name'   => 'mealInCart',
                 'value'  => json_encode($this->input->post(NULL, FALSE)),
-                'expire' => time() + (10 * 365 * 24 * 60 * 60),
+                'expire' => time()+86400,
                 'domain' => '',
                 'path'   => '/',
                 'prefix' => '',

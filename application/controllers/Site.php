@@ -77,7 +77,7 @@ class Site extends CI_Controller {
     		$access_token = 'sandbox-sq0atb-Mu5w72FrcF7b2b5JeZ74nQ';
         }elseif($this->config->item('square_sandbox') == FALSE){
             $location_id = '8YCM7KPQPJK4P';
-    		$access_token = 'Bearer sq0atp-Q2uCkPFJeXG_Z-WzQ9GbkQ';
+    		$access_token = 'sq0atp-Q2uCkPFJeXG_Z-WzQ9GbkQ';
         }
 		$nonce = $_POST['nonce_value'];
 		if ($_SERVER['REQUEST_METHOD'] != 'POST') {

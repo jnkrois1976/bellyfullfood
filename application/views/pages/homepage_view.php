@@ -17,7 +17,7 @@
                 <?php foreach($get_meals as $get_meals_row): ?>
                     <?php if($i == 0 ):?>
                         <li data-target="#carouselExampleIndicators" data-slide-to="<?=$get_meals_row->id - 1?>" class="active"></li>
-                    <?php elseif($i > 0):?>
+                    <?php elseif($i > 0 && $i < 3):?>
                         <li data-target="#carouselExampleIndicators" data-slide-to="<?=$get_meals_row->id - 1?>"></li>
                     <?php endif; ?>
                     <?php $i++; ?>
@@ -30,7 +30,7 @@
                         <div class="carousel-item active">
                             <img src="<?=$get_meals_row->meal_img_name?>" alt="<?=$get_meals_row->meal_title?>">
                         </div>
-                    <?php elseif($c > 0):?>
+                    <?php elseif($c > 0 && $c < 3):?>
                         <div class="carousel-item">
                             <img src="<?=$get_meals_row->meal_img_name?>" alt="<?=$get_meals_row->meal_title?>">
                         </div>

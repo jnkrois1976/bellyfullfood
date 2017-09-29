@@ -18,9 +18,15 @@ input[disabled]{
 button{
 	cursor: pointer;
 }
+a{
+	color: #17a2b8;
+}
 a.btn-primary, button.btn-primary {
 	background-color: #17a2b8;
 	border-color: #17a2b8
+}
+.badge-primary, .custom-control-input:checked~.custom-control-indicator{
+	background-color: #17a2b8;
 }
 button.btn-primary:disabled{
 	background-color: #999;
@@ -28,4 +34,7 @@ button.btn-primary:disabled{
 }
 .cursive{
 	font-family: 'Kalam', cursive;
+}
+h4.cursive{
+	color: #fff;
 }
