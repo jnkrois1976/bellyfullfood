@@ -27,7 +27,7 @@
                                         <input type="hidden" name="prices[]" value="<?=$get_meals_row->meal_price?>" />
                                     </td>
                                     <td class="align-middle text-center">
-                                        <input name="meals[]" data-mealname="<?=$get_meals_row->meal_title?>" class="mealQty" <?=(!$get_meals_row->meal_enable)? 'disabled': null?> type="number" data-mealid="<?=$get_meals_row->meal_id?>" min="0" max="9" value="0" />
+                                        <input onfocus="this.select()" name="meals[]" data-mealname="<?=$get_meals_row->meal_title?>" class="mealQty" <?=(!$get_meals_row->meal_enable)? 'disabled': null?> type="number" data-mealid="<?=$get_meals_row->meal_id?>" min="2" max="10" value="0" />
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

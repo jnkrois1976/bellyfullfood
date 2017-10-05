@@ -288,7 +288,7 @@ class CI_Calendar {
 					if($is_current_month){
 						if ($day < date('d')) {
 							$out .= ($day == $cur_day) ? $this->replacements['cal_cell_start_today'] : $this->replacements['cal_cell_start_past'];
-						}elseif($day > date('d')){
+						}elseif($day > date('d')+1){
 							$out .= ($day == $cur_day) ? $this->replacements['cal_cell_start_today'] : $this->replacements['cal_cell_start_future'];
 						}else{
 							$out .= ($day == $cur_day) ? $this->replacements['cal_cell_start_today'] : $this->replacements['cal_cell_start'];

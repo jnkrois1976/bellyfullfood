@@ -3,6 +3,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Admin extends CI_Controller {
 
+	public function __construct() {
+		parent::__construct();
+		if (!isset($_SERVER['PHP_AUTH_USER']) || $_SERVER['PHP_AUTH_USER'] != 'AdamDaniel' || $_SERVER['PHP_AUTH_PW'] != 'twin1029') {
+			header('WWW-Authenticate: Basic realm="MyProject"');
+			header('HTTP/1.0 401 Unauthorized');
+			die('Access Denied');
+		}
+	}
+
 	public function index(){
 
         $data = array(

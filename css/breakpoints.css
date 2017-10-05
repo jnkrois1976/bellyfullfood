@@ -1,7 +1,4 @@
 @media only screen and (min-width: 320px) and (max-width: 374px){
-    body > div.navWrapper > nav > ul > li:nth-child(1){
-        display: none!important;
-    }
     body > div.navWrapper > nav > ul > li a{
         font-size: 80%;
         white-space: nowrap;
@@ -12,8 +9,12 @@
     .navbar-toggler{
         display: block;
     }
+    .navbar-toggler-icon{
+        content: normal;
+    }
     nav.collapse{
         display: none;
+        height: auto;
     }
     #menu > div.d-flex.justify-content-between.flex-wrap{
         flex-flow: column;
@@ -27,11 +28,14 @@
     #cartForm > fieldset > legend > h4 {
         font-size: 0.6em;
     }
+    .imageCaption{
+        font-size: 24px;
+        height: 40px;
+        line-height: 40px;
+        padding: 5px;
+    }
 }
 @media only screen and (min-width: 375px) and (max-width: 413px){
-    body > div.navWrapper > nav > ul > li:nth-child(1){
-        display: none!important;
-    }
     body > div.navWrapper > nav > ul > li a{
         font-size: 80%;
         white-space: nowrap;
@@ -42,8 +46,12 @@
     .navbar-toggler{
         display: block;
     }
+    .navbar-toggler-icon{
+        content: normal;
+    }
     nav.collapse{
         display: none;
+        height: auto;
     }
     #menu > div.d-flex.justify-content-between.flex-wrap{
         flex-flow: column;
@@ -54,11 +62,14 @@
     #cartForm > fieldset > legend > h4 {
         font-size: 0.7em;
     }
+    .imageCaption{
+        font-size: 32px;
+        height: 40px;
+        line-height: 40px;
+        padding: 5px;
+    }
 }
 @media only screen and (min-width: 414px) and (max-width: 767px){
-    body > div.navWrapper > nav > ul > li:nth-child(1){
-        display: none!important;
-    }
     body > div.navWrapper > nav > ul > li a{
         font-size: 80%;
         white-space: nowrap;
@@ -69,8 +80,12 @@
     .navbar-toggler{
         display: block;
     }
+    .navbar-toggler-icon{
+        content: normal;
+    }
     nav.collapse{
         display: none;
+        height: auto;
     }
     #menu > div.d-flex.justify-content-between.flex-wrap{
         flex-flow: column;
@@ -80,5 +95,19 @@
     }
     #cartForm > fieldset > legend > h4 {
         font-size: 0.8em;
+    }
+    .imageCaption{
+        font-size: 40px;
+        height: 50px;
+        line-height: 50px;
+        padding: 10px;
+    }
+}
+@media only screen and (min-width: 768px) and (max-width: 1023px){
+    .imageCaption{
+        font-size: 40px;
+        height: 50px;
+        line-height: 50px;
+        padding: 10px;
     }
 }

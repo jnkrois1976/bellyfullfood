@@ -17,7 +17,7 @@
                     </tr>
                 </thead>
                     <tr>
-                        <form method="post" action="/site/create_menu_item">
+                        <form method="post" action="/admin/create_menu_item">
                             <td>
                                 <div class="form-group">
                                     <input class="form-control" name="meal_title" type="text" value=""/>
@@ -91,7 +91,7 @@
                 </thead>
                 <?php foreach($get_meals as $get_meals_row): ?>
                     <tr>
-                        <form method="post" action="/site/update_menu_item">
+                        <form method="post" action="/admin/update_menu_item">
                             <td>
                                 <?=$get_meals_row->id?>
                                 <input type="hidden" name="meal_id" value="<?=$get_meals_row->meal_id?>" />

@@ -58,7 +58,7 @@ nav.collapse{
     height: 80px;
 }
 .home{
-	background-image: url('../img/backgrounds/home.jpg');
+	background-image: url('../img/backgrounds/home2.jpg');
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center center;
@@ -404,4 +404,14 @@ iframe.form-control{
 }
 .invalid{
     border: solid 2px #cc0000;
+}
+.imageCaption {
+    position: absolute;
+    bottom: 0;
+    font-size: 72px;
+    line-height: 90px;
+    height: 90px;
+    padding: 15px;
+    background-color: rgba(0,0,0,0.5);
+    width: 100%;
 }

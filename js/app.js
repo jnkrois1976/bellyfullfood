@@ -128,7 +128,17 @@ APP.events = {
         }
     },
     addToCart: function(event){
-        var dateSet = MODEL.elems.rawDate.value;
+        var dateSet = MODEL.elems.rawDate.value, mealQtyElems = MODEL.elems.mealQty, qtyElem, qtyElemValue, isValid;
+        for(var i = 0; i < mealQtyElems.length; i++){
+            qtyElem = mealQtyElems[i];
+            qtyElemValue = parseInt(qtyElem.value);
+            if(qtyElemValue != 0  && qtyElemValue < 2 || qtyElemValue > 10 ){
+                isValid = qtyElem.checkValidity();
+                if(!isValid){
+                    return false;
+                }
+            }
+        }
         if(dateSet.length == 0){
             event.preventDefault();
             MODEL.elems.errorMessage.textContent='Please select a delivery date';
