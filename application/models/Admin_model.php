@@ -42,6 +42,7 @@
                 'meal_id' => $this->input->post('meal_id'),
                 'meal_desc' => $this->input->post('meal_desc'),
                 'meal_img_name' => $this->input->post('meal_img_name'),
+                'meal_price' => $this->input->post('meal_price'),
                 'meal_ingredients' => $this->input->post('meal_ingredients'),
                 'meal_heating_inst' => $this->input->post('meal_heating_inst'),
                 'meal_nutrition_info' => $this->input->post('meal_nutrition_info'),
@@ -55,6 +56,7 @@
             $data = array(
                 'meal_id' => $this->input->post('meal_id'),
                 'meal_title' => $this->input->post('meal_title'),
+                'meal_price' => $this->input->post('meal_price'),
                 'meal_desc' => $this->input->post('meal_desc'),
                 'meal_img_name' => $this->input->post('meal_img_name'),
                 'meal_ingredients' => $this->input->post('meal_ingredients'),
@@ -63,6 +65,39 @@
                 'meal_enable' => ($this->input->post('meal_enable') == 'on') ? true: false
             );
             $this->db->insert('meals', $data);
+        }
+
+        function update_coupon(){
+            $data = array(
+                'coupon_id' => $this->input->post('coupon_id'),
+                'coupon_name' => $this->input->post('coupon_name'),
+                'coupon_amount' => $this->input->post('coupon_amount'),
+                'coupon_expires' => $this->input->post('coupon_expires'),
+                'coupon_enable' => ($this->input->post('coupon_enable') == 'on') ? true: false
+            );
+            $this->db->where('coupon_id', $data['coupon_id']);
+            $this->db->update('coupons', $data);
+        }
+
+        function create_coupon(){
+            $data = array(
+                'coupon_name' => $this->input->post('coupon_name'),
+                'coupon_amount' => $this->input->post('coupon_amount'),
+                'coupon_expires' => $this->input->post('coupon_expires'),
+                'coupon_enable' => ($this->input->post('coupon_enable') == 'on') ? true: false
+            );
+            $this->db->insert('coupons', $data);
+        }
+
+        function get_coupons(){
+            $sql = "SELECT * FROM coupons";
+            $query = $this->db->query($sql);
+            if ($query->num_rows() > 0){
+               foreach ($query->result() as $row) {
+                   $data[] = $row;
+               }
+               return $data;
+            }
         }
 
     } /* login model ends */

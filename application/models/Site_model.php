@@ -62,6 +62,7 @@
                 'order_meals' => implode($parsed_meals_data),
                 'cust_message' => $this->input->post('comments'),
                 'order_dollar_amount' => $this->input->post('orderTotal'),
+                'coupon_applied' => $this->input->post('couponApplied'),
                 'order_taxes_amount' => $this->input->post('taxesTotal'),
                 'cust_name' => $this->input->post('customerName'),
                 'cust_email' => $this->input->post('customerEmail'),

@@ -76,7 +76,7 @@ $total_meals = 0;
                                     </div>
                                     <div class="form-row deliveryAddress">
                                         <div class="col-sm-4">
-                                            <select class="custom-select w-100 form-control" onchange="APP.events.updateZipCode(event)" name="delivery_locality" placeholder="Select your city" required>
+                                            <select id="selectedCity" class="custom-select w-100 form-control" onchange="APP.events.updateZipCode(event)" name="delivery_locality" placeholder="Select your city" required>
                                                 <option value=""></option>
                                                 <option value="Boca Raton">Boca Raton</option>
                                                 <option value="Delray Beach">Delray Beach</option>
@@ -205,13 +205,27 @@ $total_meals = 0;
                                             </tr>
                                         <?php endif; ?>
                                     <?php endforeach; ?>
+                                    <?php if($this->config->item('enable_coupons')): ?>
                                     <tr>
-                                        <td>-</td>
+                                        <td class="text-center">-</td>
+                                        <td id="couponInputDisplay">
+                                            <div class="form-group mb-0">
+                                                <input class="form-control form-control-sm mb-0" type="text" value="" placeholder="Coupon Code" name="couponCode" id="couponCode" />
+                                            </div>
+                                            <div class="alert alert-danger mt-1 mb-1 p-1" id="couponError">test</div>
+                                        </td>
+                                        <td class="text-right" id="couponAmountDisplay">- $0.00</td>
+                                    </tr>
+                                    <?php elseif(!$this->config->item('enable_coupons')):?>
+                                        <input type="hidden" value="" name="couponCode" id="couponCode" />
+                                    <?php endif; ?>
+                                    <tr>
+                                        <td class="text-center">-</td>
                                         <td>Taxes</td>
                                         <td class="text-right" id="taxesDisplay">$<?=money_format('%i',0)?></td>
                                     </tr>
                                     <tr>
-                                        <td>-</td>
+                                        <td class="text-center">-</td>
                                         <td>Delivery</td>
                                         <td class="text-right" id="taxesDisplay">$0.00</td>
                                     </tr>
@@ -244,6 +258,7 @@ $total_meals = 0;
                             <input type="hidden" value="<?=$total_price?>" name="serviceTotal" id="serviceTotal" />
                             <input type="hidden" name="transactionStatus" id="transactionStatus" value="">
                             <input type="hidden" name="transactionId" id="transactionId" value="">
+                            <input type="hidden" id="couponApplied" name="couponApplied" value="">
                             <!-- <button type="submit" form="cartForm" class="btn btn-primary btn-lg btn-block">Place order</button> -->
                             <button onclick="requestCardNonce(event)" type="submit" class="btn btn-primary btn-lg btn-block">Place order</button>
                         </div>

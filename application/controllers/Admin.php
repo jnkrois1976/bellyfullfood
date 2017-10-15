@@ -87,4 +87,27 @@ class Admin extends CI_Controller {
         );
         $this->load->view('admin_templates/template_view', array('data' =>$data));
 	}
+
+	public function create_coupon(){
+		$this->load->model('admin_model');
+		$create_coupon = $this->admin_model->create_coupon();
+		header('Location: /admin/coupons');
+	}
+
+	public function update_coupon(){
+		$this->load->model('admin_model');
+		$update_coupon = $this->admin_model->update_coupon();
+		header('Location: /admin/coupons');
+	}
+
+	public function coupons(){
+		$this->load->model('admin_model');
+		$get_coupons = $this->admin_model->get_coupons();
+        $data = array(
+            'page_class' => 'coupons',
+            'main_content' => 'admin_pages/coupons_view',
+			'coupons' => $get_coupons
+        );
+        $this->load->view('admin_templates/template_view', array('data' =>$data));
+    }
 }

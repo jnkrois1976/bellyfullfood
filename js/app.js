@@ -26,6 +26,7 @@ MODEL.elems = {
     deliveryFields: document.getElementsByClassName('deliveryAddress'),
     billingAddress: document.getElementsByClassName('billingAddress'),
     billingField: document.getElementsByClassName(' billingField'),
+    selectedCity: document.getElementById('selectedCity'),
     deliveryZip: document.getElementById('deliveryZip'),
     taxRateInput: document.getElementById('taxRate'),
     orderTotal: document.getElementById('orderTotal'),
@@ -33,7 +34,13 @@ MODEL.elems = {
     taxesTotal: document.getElementById('taxesTotal'),
     taxesDisplay: document.getElementById('taxesDisplay'),
     totalDisplay: document.getElementById('totalDisplay'),
-    loading: document.getElementById('loading')
+    loading: document.getElementById('loading'),
+    mealCount: document.getElementById('mealCount'),
+    couponCode: document.getElementById('couponCode'),
+    couponAmountDisplay: document.getElementById('couponAmountDisplay'),
+    couponInputDisplay: document.getElementById('couponInputDisplay'),
+    couponApplied: document.getElementById('couponApplied'),
+    couponError: document.getElementById('couponError')
 };
 
 APP.events = {
@@ -78,8 +85,16 @@ APP.events = {
             qtyElemValue += parseInt(mealQtyElems[i].value);
             if(qtyElemValue >= 6){
                 MODEL.elems.addToCartBtn.removeAttribute('disabled');
+                MODEL.elems.mealCount.classList.remove('alert-danger');
+                MODEL.elems.mealCount.classList.add('alert-success');
+                MODEL.elems.mealCount.textContent="Your order can be placed now.";
             }else if(qtyElemValue < 6){
+                var leftToGo = 6 - qtyElemValue;
+                var countMessage = "Please select at least "+ leftToGo +" more meals";
                 MODEL.elems.addToCartBtn.setAttribute('disabled', '');
+                MODEL.elems.mealCount.classList.add('alert');
+                MODEL.elems.mealCount.classList.add('alert-danger');
+                MODEL.elems.mealCount.textContent=countMessage;
             }
         }
     },
@@ -173,16 +188,28 @@ APP.events = {
     },
     updateTaxRate: function(selectedCity){
         var parsedTotal =  Number(parseFloat(MODEL.elems.orderTotal.value).toFixed(2)), taxes, parsedTaxes, totalWithTax;
-        if(selectedCity == "Boca Raton" || selectedCity == "Delray Beach"){
-            taxes = Number(parseFloat(parsedTotal * .07).toFixed(2));
-        }else{
-            taxes = Number(parseFloat(parsedTotal * .06).toFixed(2));
+        selectedCity = selectedCity || MODEL.elems.selectedCity.value;
+        if(selectedCity != ""){
+            if(selectedCity == "Boca Raton" || selectedCity == "Delray Beach"){
+                taxes = Number(parseFloat(parsedTotal * .07).toFixed(2));
+            }else{
+                taxes = Number(parseFloat(parsedTotal * .06).toFixed(2));
+            }
+            totalWithTax = parsedTotal + taxes;
+            MODEL.elems.taxesTotal.value=taxes;
+            MODEL.elems.taxesDisplay.textContent='$'+ taxes;
+            MODEL.elems.serviceTotal.value=totalWithTax;
+            MODEL.elems.totalDisplay.textContent='$'+totalWithTax;
         }
-        totalWithTax = parsedTotal + taxes;
-        MODEL.elems.taxesTotal.value=taxes;
-        MODEL.elems.taxesDisplay.textContent='$'+ taxes;
-        MODEL.elems.serviceTotal.value=totalWithTax;
-        MODEL.elems.totalDisplay.textContent='$'+totalWithTax;
+    },
+    applyCouponCode: function(){
+        AJAX.calls.validateCoupon(MODEL.elems.couponCode.value);
+    },
+    addCoupon: function(){
+        var couponCode = MODEL.elems.couponCode;
+        if(couponCode != null){
+            couponCode.addEventListener('change', this.applyCouponCode, false);
+        }
     },
     updateZipCode: function(event){
         var selectedCity = event.target.value,
@@ -225,3 +252,4 @@ APP.events.mealQtyListener();
 APP.events.pickupDate();
 APP.events.monthNavEvents();
 APP.events.addToCartEvent();
+APP.events.addCoupon();

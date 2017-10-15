@@ -37,6 +37,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/admin/menu">View Menu</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/coupons">View Coupons</a>
+                </li>
             </ul>
         </div>
     </nav>

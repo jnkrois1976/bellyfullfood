@@ -13,5 +13,11 @@
             echo $generate_calendar;
         }
 
+        public function validate_coupon(){
+            $this->load->model('ajax_model');
+            $validate_coupon = $this->ajax_model->validate_coupon();
+            echo $validate_coupon;
+        }
+
     }
 ?>

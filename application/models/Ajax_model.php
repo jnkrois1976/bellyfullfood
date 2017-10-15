@@ -32,6 +32,28 @@
 
 		} // generate_calendar ends
 
+        function validate_coupon(){
+            $coupon_name = $this->input->post('coupon_name');
+            $sql = "SELECT * FROM coupons WHERE coupon_name='$coupon_name'";
+            $query = $this->db->query($sql);
+            if($query->num_rows() == 0){
+                $coupon = array("invalid_coupon" => "true");
+                return json_encode($coupon);
+            }elseif($query->num_rows() > 0){
+                $valid_coupon = $query->row_array();
+                $today = date('Y-m-d');
+                $expired = ($valid_coupon['coupon_expires'] < $today)? "true": "false";
+                $disabled = ($valid_coupon['coupon_enable'])? "false": "true";
+                $coupon = array(
+                    "coupon_amount" => $valid_coupon['coupon_amount'],
+                    "coupon_expired" => $expired,
+                    "coupon_disabled" => $disabled,
+                    "coupon_name" => $valid_coupon['coupon_name']
+                );
+                return json_encode($coupon);
+            }
+        }
+
     }
 
 ?>

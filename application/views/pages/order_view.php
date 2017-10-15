@@ -3,6 +3,7 @@
         <div class="col">
             <h1 class="pageTitle">Place Your Order</h1>
             <h4>Choose your meals and the quantity below</h4>
+            <small style="color: #cc0000">(Minimum of 2 per menu item, and 6 meals per order)</small>
         </div>
     </div>
     <div class="row">
@@ -40,7 +41,7 @@
                             Your Selections
                         </div>
                         <div class="card-body">
-                            <h6>Please select a minimun of 6 meals</h6>
+                            <h6 id="mealCount">Please select a minimun of 6 meals</h6>
                             <table class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
@@ -51,7 +52,11 @@
                                 <tbody id="selections">
                                 </tbody>
                             </table>
-                            <h6>Choose your delivery date and time</h6>
+                            <h6>Choose your desired delivery date and time*</h6>
+                            <small class="alert alert-warning" style="display: block;">
+                                *The date you choose below is subject to availability.<br />
+                                An estimated delivery date will be provided once you add your order to the shopping cart.
+                            </small>
                             <div id="pickUpDate">
                                 <?=$generate_calendar?>
                                 <div id="errorMessage" class="d-none alert alert-danger" role="alert"></div>

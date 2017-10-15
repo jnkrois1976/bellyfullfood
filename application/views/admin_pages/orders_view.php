@@ -18,6 +18,8 @@
                     <th>Delivery date</th>
                     <th>Delivery time</th>
                     <th>Meals</th>
+                    <th>Coupon</th>
+                    <th>Taxes</th>
                     <th>Total</th>
                     <th>Name</th>
                     <th>Email</th>
@@ -44,6 +46,10 @@
                                 <?=$break_meal[1]?> - Qty:<?=$break_meal[0]."<br />"?>
                             <?php endfor; ?>
                         </td>
+                        <td>
+                            <?=$get_orders_row->coupon_applied?>
+                        </td>
+                        <td>$<?=money_format('%i', $get_orders_row->order_taxes_amount)?></td>
                         <td>$<?=money_format('%i', $get_orders_row->order_dollar_amount)?></td>
                         <td><?=$get_orders_row->cust_name?></td>
                         <td><?=$get_orders_row->cust_email?></td>

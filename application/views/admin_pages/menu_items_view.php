@@ -31,12 +31,14 @@
                             </td>
                             <td>
                                 <div class="form-group">
-                                    <textarea class="form-control" name="meal_price"></textarea>
+                                    <input class="form-control" name="meal_price"/>
                                 </div>
                             </td>
                             <td>
                                 <div class="form-group">
                                     <input class="form-control" name="meal_img_name" type="text" value=""/>
+                                    <small>Type: /img/meals/<strong><em>img_name</em></strong>.jpg<br />Where "img_name" is the name of the new image</small>
+
                                 </div>
                             </td>
                             <td>
@@ -108,7 +110,7 @@
                             </td>
                             <td>
                                 <div class="form-group">
-                                    <textarea class="form-control" name="meal_price" onchange="APP.events.enableSubmit(event)" onblur="APP.events.disableInput(event)" ondblclick="APP.events.editInputEvent(event)" readonly><?=$get_meals_row->meal_price?></textarea>
+                                    <input class="form-control" name="meal_price" onchange="APP.events.enableSubmit(event)" onblur="APP.events.disableInput(event)" ondblclick="APP.events.editInputEvent(event)" readonly value="<?=$get_meals_row->meal_price?>">
                                 </div>
                             </td>
                             <td>

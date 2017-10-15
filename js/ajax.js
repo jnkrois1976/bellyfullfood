@@ -25,6 +25,47 @@ AJAX.calls = {
                 MODEL.elems.calendar.innerHTML=success;
             }
         });
+    },
+    validateCoupon: function(couponCode){
+        var values = {coupon_name: couponCode};
+        $.ajax({
+            url: '/ajax/validate_coupon',
+            data: values,
+            type: 'POST',
+            success: function(success){
+                if(success.length > 0){
+                    var couponObj = $.parseJSON(success);
+                    // console.log(couponObj.coupon_expired);
+                    if(couponObj.coupon_expired === "true"){
+                        MODEL.elems.couponError.textContent="Coupon has expired";
+                        MODEL.elems.couponError.style.display="block";
+                        return false;
+                    }else if(couponObj.coupon_disabled === "true"){
+                        MODEL.elems.couponError.textContent="Coupon not available";
+                        MODEL.elems.couponError.style.display="block";
+                        return false;
+                    }else if(couponObj.invalid_coupon === "true"){
+                        MODEL.elems.couponError.textContent="Invalid coupon";
+                        MODEL.elems.couponError.style.display="block";
+                        return false;
+                    }else{
+                        var parsedTotal =  Number(parseFloat(MODEL.elems.orderTotal.value).toFixed(2)), couponAmount, totalMinusCoupon;
+                        couponAmount = parseFloat(couponObj.coupon_amount)
+                        totalMinusCoupon = parsedTotal - couponAmount;
+                        MODEL.elems.orderTotal.value=totalMinusCoupon;
+                        MODEL.elems.couponAmountDisplay.textContent='-$'+ couponAmount+".00";
+                        MODEL.elems.serviceTotal.value=totalMinusCoupon;
+                        MODEL.elems.totalDisplay.textContent='$'+totalMinusCoupon+".00";
+                        if(MODEL.elems.selectedCity.value != ""){
+                            APP.events.updateTaxRate();
+                        }
+                        MODEL.elems.couponCode.remove();
+                        MODEL.elems.couponInputDisplay.textContent="Coupon Applied";
+                        MODEL.elems.couponApplied.value=couponObj.coupon_name;
+                    }
+                }
+            }
+        });
     }
 
 }
