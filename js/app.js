@@ -196,10 +196,10 @@ APP.events = {
                 taxes = Number(parseFloat(parsedTotal * .06).toFixed(2));
             }
             totalWithTax = parsedTotal + taxes;
-            MODEL.elems.taxesTotal.value=taxes;
-            MODEL.elems.taxesDisplay.textContent='$'+ taxes;
-            MODEL.elems.serviceTotal.value=totalWithTax;
-            MODEL.elems.totalDisplay.textContent='$'+totalWithTax;
+            MODEL.elems.taxesTotal.value=taxes.toFixed(2);
+            MODEL.elems.taxesDisplay.textContent='$'+ taxes.toFixed(2);
+            MODEL.elems.serviceTotal.value=totalWithTax.toFixed(2);
+            MODEL.elems.totalDisplay.textContent='$'+totalWithTax.toFixed(2);
         }
     },
     applyCouponCode: function(){

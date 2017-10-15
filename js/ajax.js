@@ -52,10 +52,10 @@ AJAX.calls = {
                         var parsedTotal =  Number(parseFloat(MODEL.elems.orderTotal.value).toFixed(2)), couponAmount, totalMinusCoupon;
                         couponAmount = parseFloat(couponObj.coupon_amount)
                         totalMinusCoupon = parsedTotal - couponAmount;
-                        MODEL.elems.orderTotal.value=totalMinusCoupon;
-                        MODEL.elems.couponAmountDisplay.textContent='-$'+ couponAmount+".00";
-                        MODEL.elems.serviceTotal.value=totalMinusCoupon;
-                        MODEL.elems.totalDisplay.textContent='$'+totalMinusCoupon+".00";
+                        MODEL.elems.orderTotal.value=totalMinusCoupon.toFixed(2);
+                        MODEL.elems.couponAmountDisplay.textContent='-$'+ couponAmount.toFixed(2);
+                        MODEL.elems.serviceTotal.value=totalMinusCoupon.toFixed(2);
+                        MODEL.elems.totalDisplay.textContent='$'+totalMinusCoupon.toFixed(2);
                         if(MODEL.elems.selectedCity.value != ""){
                             APP.events.updateTaxRate();
                         }

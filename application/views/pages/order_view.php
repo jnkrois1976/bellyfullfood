@@ -41,7 +41,7 @@
                             Your Selections
                         </div>
                         <div class="card-body">
-                            <h6 id="mealCount">Please select a minimun of 6 meals</h6>
+                            <h6 id="mealCount">Please select a minimum of 6 meals</h6>
                             <table class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
@@ -54,8 +54,8 @@
                             </table>
                             <h6>Choose your desired delivery date and time*</h6>
                             <small class="alert alert-warning" style="display: block;">
-                                *The date you choose below is subject to availability.<br />
-                                An estimated delivery date will be provided once you add your order to the shopping cart.
+                                *The date you choose below is subject to availability.
+                                <!-- An estimated delivery date will be provided once you add your order to the shopping cart. -->
                             </small>
                             <div id="pickUpDate">
                                 <?=$generate_calendar?>
