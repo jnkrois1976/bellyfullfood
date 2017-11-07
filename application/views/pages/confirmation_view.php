@@ -64,7 +64,7 @@
             <div class="card mb-3">
                 <div class="card-body">
                     <small>
-                        * At Belly Full Foods, we do our best to make sure the majority of our menu consists of the highest quality organic and/or non-GMO ingredients, although some of these ingredients may not be available in their organic or non-GMO varieties at certain times.
+                        * At Belly Full Foods, we do our best to make sure the majority of our menu consists of the highest quality <!--organic and/or non-GMO--> ingredients, although some of these ingredients may not be available <!--in their organic or non-GMO varieties--> at certain times.
                         For more information, please email us at info@bellyfullfoods.com.
                     </small>
                 </div>

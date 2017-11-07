@@ -1,6 +1,17 @@
 <!doctype html>
 <html class="no-js" lang="">
     <head>
+        <?php if($this->config->item('google_analytics')): ?>
+            <!-- Global site tag (gtag.js) - Google Analytics -->
+            <script async src="https://www.googletagmanager.com/gtag/js?id=UA-107620707-1"></script>
+            <script>
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+
+              gtag('config', 'UA-107620707-1');
+            </script>
+        <?php endif; ?>
         <script language="javascript">
             if (document.location.protocol != "https:"){
                 document.location.href = "https://bellyfullfoods.com" + document.location.pathname;
@@ -15,6 +26,7 @@
         <meta name="author" content="Juan C. Rois">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="format-detection" content="telephone=no" />
+        <meta name="google-site-verification" content="RBUnCKbI9lmvQg6RbKVe5aXOM3izigpk8A-NzDP8cfQ" />
         <link rel="alternate" hreflang="en-us" href="alternateURL">
         <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
         <link rel="apple-touch-icon" href="apple-touch-icon.png">

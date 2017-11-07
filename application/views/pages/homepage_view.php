@@ -31,7 +31,7 @@
                             <img src="<?=$get_meals_row->meal_img_name?>" alt="<?=$get_meals_row->meal_title?>">
                             <div class="imageCaption cursive"><?=$get_meals_row->meal_title?></div>
                         </div>
-                    <?php elseif($c > 0 && $c < 3):?>
+                    <?php elseif($c > 0 && $c < 10):?>
                         <div class="carousel-item">
                             <img src="<?=$get_meals_row->meal_img_name?>" alt="<?=$get_meals_row->meal_title?>">
                             <div class="imageCaption cursive"><?=$get_meals_row->meal_title?></div>
@@ -71,7 +71,8 @@
   </div> -->
   <div id="bottomShowCase" class="row">
     <div class="col-sm-4">
-      <p class="d-flex align-items-center justify-content-center">Organic/Non-GMO</p>
+      <!-- <p class="d-flex align-items-center justify-content-center">Organic/Non-GMO</p> -->
+      <p class="d-flex align-items-center justify-content-center">Top Quality</p>
     </div>
     <div class="col-sm-4">
       <p class="d-flex align-items-center justify-content-center">Free Delivery</p>

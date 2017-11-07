@@ -3,7 +3,7 @@
     class Admin_model extends CI_Model {
 
         function get_meals(){
-            $sql = "SELECT * FROM meals";
+            $sql = "SELECT * FROM meals ORDER BY meal_enable DESC";
             $query = $this->db->query($sql);
             if ($query->num_rows() > 0){
                foreach ($query->result() as $row) {
@@ -90,7 +90,7 @@
         }
 
         function get_coupons(){
-            $sql = "SELECT * FROM coupons";
+            $sql = "SELECT * FROM coupons ORDER BY coupon_enable DESC";
             $query = $this->db->query($sql);
             if ($query->num_rows() > 0){
                foreach ($query->result() as $row) {

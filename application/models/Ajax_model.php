@@ -45,7 +45,7 @@
                 $expired = ($valid_coupon['coupon_expires'] < $today)? "true": "false";
                 $disabled = ($valid_coupon['coupon_enable'])? "false": "true";
                 $coupon = array(
-                    "coupon_amount" => $valid_coupon['coupon_amount'],
+                    "coupon_amount" => ($valid_coupon['coupon_amount'] != "")? $valid_coupon['coupon_amount']: "0",
                     "coupon_expired" => $expired,
                     "coupon_disabled" => $disabled,
                     "coupon_name" => $valid_coupon['coupon_name']

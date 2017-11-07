@@ -35,7 +35,6 @@ AJAX.calls = {
             success: function(success){
                 if(success.length > 0){
                     var couponObj = $.parseJSON(success);
-                    // console.log(couponObj.coupon_expired);
                     if(couponObj.coupon_expired === "true"){
                         MODEL.elems.couponError.textContent="Coupon has expired";
                         MODEL.elems.couponError.style.display="block";
@@ -45,6 +44,10 @@ AJAX.calls = {
                         MODEL.elems.couponError.style.display="block";
                         return false;
                     }else if(couponObj.invalid_coupon === "true"){
+                        MODEL.elems.couponError.textContent="Invalid coupon";
+                        MODEL.elems.couponError.style.display="block";
+                        return false;
+                    }else if(couponObj.coupon_amount === "0"){
                         MODEL.elems.couponError.textContent="Invalid coupon";
                         MODEL.elems.couponError.style.display="block";
                         return false;
