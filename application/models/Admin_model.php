@@ -40,6 +40,7 @@
         function update_menu_item(){
             $data = array(
                 'meal_id' => $this->input->post('meal_id'),
+                'meal_title' => $this->input->post('meal_title'),
                 'meal_desc' => $this->input->post('meal_desc'),
                 'meal_img_name' => $this->input->post('meal_img_name'),
                 'meal_price' => $this->input->post('meal_price'),
