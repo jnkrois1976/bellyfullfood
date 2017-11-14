@@ -2,8 +2,8 @@
     <div class="row">
         <div class="col">
             <h1 class="pageTitle">Place Your Order</h1>
-            <h4>Choose your meals and the quantity below</h4>
-            <small style="color: #cc0000">(Minimum of 2 per menu item, and 6 meals per order)</small>
+            <h4>Choose your meals and the quantity below <small style="color: #cc0000; font-size: 70%;">(minimum 6 meals per order)</small></h4>
+
         </div>
     </div>
     <div class="row">
@@ -28,7 +28,12 @@
                                         <input type="hidden" name="prices[]" value="<?=$get_meals_row->meal_price?>" />
                                     </td>
                                     <td class="align-middle text-center">
-                                        <input onfocus="this.select()" name="meals[]" data-mealname="<?=$get_meals_row->meal_title?>" class="mealQty" <?=(!$get_meals_row->meal_enable)? 'disabled': null?> type="number" data-mealid="<?=$get_meals_row->meal_id?>" min="2" max="10" value="0" />
+                                        <select name="meals[]" data-mealname="<?=$get_meals_row->meal_title?>" class="mealQty" <?=(!$get_meals_row->meal_enable)? 'disabled': null?> data-mealid="<?=$get_meals_row->meal_id?>">
+                                            <option value="0">0</option>
+                                            <?php for($i = 2; $i < 11; $i++): ?>
+                                                <option value="<?=$i?>"><?=$i?></option>
+                                            <?php endfor; ?>
+                                        </select>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

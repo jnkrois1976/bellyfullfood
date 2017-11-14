@@ -288,6 +288,8 @@ class CI_Calendar {
 					if($is_current_month){
 						if ($day < date('d')) {
 							$out .= ($day == $cur_day) ? $this->replacements['cal_cell_start_today'] : $this->replacements['cal_cell_start_past'];
+						}elseif($day == date('d')+1){
+							$out .= ($day == $cur_day) ? $this->replacements['cal_cell_start_today'] : $this->replacements['cal_cell_start_tomorrow'];
 						}elseif($day > date('d')+1){
 							$out .= ($day == $cur_day) ? $this->replacements['cal_cell_start_today'] : $this->replacements['cal_cell_start_future'];
 						}else{
@@ -307,6 +309,8 @@ class CI_Calendar {
 						if($is_current_month){
 							if ($day < date('d') && $is_current_month) {
 								$temp = ($day == $cur_day) ? $this->replacements['cal_cell_no_content_today'] : $this->replacements['cal_cell_no_content_past'];
+							}elseif($day == date('d')+1 && $is_current_month){
+								$temp = ($day == $cur_day) ? $this->replacements['cal_cell_no_content_today'] : $this->replacements['cal_cell_no_content_tomorrow'];
 							}elseif($day > date('d') && $is_current_month){
 								$temp = ($day == $cur_day) ? $this->replacements['cal_cell_no_content_today'] : $this->replacements['cal_cell_no_content_future'];
 							}else{
@@ -505,6 +509,7 @@ class CI_Calendar {
 			'cal_cell_start_past'		=> '<td class="past disabled">',
 			'cal_cell_start_future'		=> '<td class="future">',
 			'cal_cell_start_today'		=> '<td>',
+			'cal_cell_start_tomorrow'	=> '<td class="tomorrow">',
 			'cal_cell_start_other'		=> '<td style="color: #666;">',
 			'cal_cell_content'			=> '<a href="{content}">{day}</a>',
 			'cal_cell_content_today'	=> '<a href="{content}"><strong>{day}</strong></a>',
@@ -512,6 +517,7 @@ class CI_Calendar {
 			'cal_cell_no_content_past'	=> '{day}',
 			'cal_cell_no_content_future'=> '{day}',
 			'cal_cell_no_content_today'	=> '<strong>{day}</strong>',
+			'cal_cell_no_content_tomorrow'=> '{day}',
 			'cal_cell_blank'			=> '&nbsp;',
 			'cal_cell_other'			=> '{day}',
 			'cal_cell_end'				=> '</td>',

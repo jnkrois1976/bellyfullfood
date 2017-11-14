@@ -80,6 +80,7 @@
             $this->db->update('coupons', $data);
         }
 
+
         function create_coupon(){
             $data = array(
                 'coupon_name' => $this->input->post('coupon_name'),
@@ -101,6 +102,20 @@
             }
         }
 
+        function maintenance(){
+            $sql = "SELECT status FROM maintenance_mode";
+            $query = $this->db->query($sql);
+            $status = $query->row_array();
+            // echo var_dump($status['status']);
+            return $status;
+        }
+
+        function set_maintenance(){
+            $status = $this->input->post('setMaintenance');
+            $data = array('status' => ($status == 'off'? 1: 0));
+            $update = $this->db->update('maintenance_mode', $data);
+            return $update;
+        }
     } /* login model ends */
 
 ?>

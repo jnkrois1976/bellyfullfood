@@ -40,7 +40,8 @@ MODEL.elems = {
     couponAmountDisplay: document.getElementById('couponAmountDisplay'),
     couponInputDisplay: document.getElementById('couponInputDisplay'),
     couponApplied: document.getElementById('couponApplied'),
-    couponError: document.getElementById('couponError')
+    couponError: document.getElementById('couponError'),
+    setMaintenance: document.getElementById('setMaintenance')
 };
 
 APP.events = {
@@ -60,7 +61,7 @@ APP.events = {
                 mealSelected = true;
             }
         })
-        if(parseInt(target.value) > 0 && !mealSelected){
+        if(parseInt(target.value) >= 2 && !mealSelected){
             var newRow = document.createElement('tr'),
                 newMealCell = document.createElement('td'),
                 newQtyCell = document.createElement('td'),
@@ -75,7 +76,11 @@ APP.events = {
             MODEL.elems.selections.appendChild(newRow);
         }else{
             var targetRow = document.getElementById(target.dataset.mealid);
-            if(target.value == 0){
+            if(target.value == 0 || target.value == ""){
+                var findIndex = DATA.order.currentSelections.indexOf(target.dataset.mealid);
+                if(findIndex != -1){
+                    DATA.order.currentSelections.splice(findIndex, 1);
+                }
                 targetRow.remove();
             }else{
                 targetRow.children[1].textContent=target.value;

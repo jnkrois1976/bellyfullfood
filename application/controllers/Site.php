@@ -3,6 +3,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Site extends CI_Controller {
 
+	public function __construct()
+        {
+            parent::__construct();
+            $this->load->model('admin_model');
+			$maintenance = $this->admin_model->maintenance();
+			if($maintenance['status'] == '0'){
+				header('Location: /maintenance');
+			}
+        }
+
 	public function index(){
 		$this->load->model('site_model');
 		$get_meals = $this->site_model->get_meals();

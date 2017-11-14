@@ -40,6 +40,17 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/admin/coupons">View Coupons</a>
                 </li>
+                <li class="nav-item">
+                    <form class="form-inline" action="/admin/set_maintenance" method="post">
+                        <div class="form-group">
+                            <span>The website is "<?= ($status['status']? "On line": "OFFLINE"); ?>"&nbsp;</span>
+                            <label class="switch">
+                                <input onchange="this.form.submit()" value="<?= ($status['status']? "on": "off"); ?>" id="setMaintenance" type="checkbox" <?= ($status['status']? "checked": ""); ?> name="setMaintenance">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                    </form>
+                </li>
             </ul>
         </div>
     </nav>

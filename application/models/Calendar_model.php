@@ -16,7 +16,8 @@
                 'heading_previous_cell' => '<th>&nbsp;</th>',
                 'heading_next_cell' => '<th><a href="{next_url}" class="monthNav">&#10095;</a></th>',
                 'cal_cell_start_today' => '<td class="today">',
-                'cal_cell_no_content_future' => '<span class="pickUpDay" data-fulldate="'.$year.$month.'{day}">{day}</span>'
+                'cal_cell_no_content_future' => '<span class="pickUpDay" data-fulldate="'.$year.$month.'{day}">{day}</span>',
+                'cal_cell_no_content_tomorrow' => '{day}'
             );
 			$this->load->library('calendar', $prefs);
 			return $this->calendar->generate();

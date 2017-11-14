@@ -13,10 +13,12 @@ class Admin extends CI_Controller {
 	}
 
 	public function index(){
-
+		$this->load->model('admin_model');
+		$status = $this->admin_model->maintenance();
         $data = array(
             'page_class' => 'home',
-            'main_content' => 'admin_pages/dashboard_view'
+            'main_content' => 'admin_pages/dashboard_view',
+			'status' => $status
         );
         $this->load->view('admin_templates/template_view', array('data' =>$data));
     }
@@ -110,4 +112,13 @@ class Admin extends CI_Controller {
         );
         $this->load->view('admin_templates/template_view', array('data' =>$data));
     }
+
+	public function set_maintenance(){
+		$this->load->model('admin_model');
+		$set_mode = $this->admin_model->set_maintenance();
+		if($set_mode){
+			header('Location: /admin/index');
+		}
+
+	}
 }
